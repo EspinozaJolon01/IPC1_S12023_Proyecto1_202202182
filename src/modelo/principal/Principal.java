@@ -10,10 +10,12 @@ import modelo.beans.Municipio;
 import modelo.beans.User;
 import modelo.dao.UserDao;
 import modelo.beans.Region;
+import modelo.beans.RegistroTarjeta;
 import modelo.dao.DepartamentoDao;
 import modelo.dao.KioscoDao;
 import modelo.dao.MunicipioDao;
 import modelo.dao.RegionDao;
+import modelo.dao.RegistroTarjetaDao;
 import vistas.Frmlogin;
 
 /**
@@ -27,6 +29,7 @@ public class Principal {
     private static KioscoDao kioscoDao = new KioscoDao();
     private static DepartamentoDao departamentoDao = new DepartamentoDao();
     private static MunicipioDao municipioDao = new MunicipioDao();
+    private static RegistroTarjetaDao registroTarjetaDao = new RegistroTarjetaDao();
 
     //verificar 
     public static boolean autentificarUser(String correo, String password) {
@@ -87,14 +90,17 @@ public class Principal {
     public static Municipio obtenerMuni(String nombreMuni) {
         return municipioDao.obtenerMuni(nombreMuni);
     }
-    
-    public static void main(String[] args){
-        
-        
-        Frmlogin inicio =  new Frmlogin();
-        inicio.show();
+
+    //registro de tarjeta
+    public static boolean agregarTarjeta(RegistroTarjeta registroTarjetas) {
+        return registroTarjetaDao.AgregarTarjeta(registroTarjetas);
     }
-    
-    
-    
+
+    public static void main(String[] args) {
+
+        /*
+        Frmlogin inicio =  new Frmlogin();
+        inicio.show();*/
+    }
+
 }

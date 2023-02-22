@@ -4,6 +4,10 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
+import modelo.beans.RegistroTarjeta;
+import modelo.principal.Principal;
+
 /**
  *
  * @author Usuario
@@ -74,6 +78,9 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel116 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel117 = new javax.swing.JLabel();
+        txtNombreTarjeta = new javax.swing.JTextField();
+        txtNumTarjeta1 = new javax.swing.JTextField();
+        jDateVencimeinto = new com.toedter.calendar.JDateChooser();
 
         jPanel17.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -518,6 +525,20 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel117.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel117.setText("Dirección destino");
 
+        txtNombreTarjeta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
+        txtNombreTarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreTarjetaActionPerformed(evt);
+            }
+        });
+
+        txtNumTarjeta1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
+        txtNumTarjeta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumTarjeta1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -528,44 +549,47 @@ public class FrmUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel90, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel87))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel92))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel94))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addComponent(JBRegistrarDatos))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(94, 94, 94)
+                                .addComponent(JBRegistrarTar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel88))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addComponent(jLabel87))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel89))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel92))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel94))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(97, 97, 97)
-                                        .addComponent(JBRegistrarDatos))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(94, 94, 94)
-                                        .addComponent(JBRegistrarTar)))
-                                .addGap(0, 151, Short.MAX_VALUE)))
-                        .addGap(34, 34, 34))
+                                    .addComponent(jLabel88)
+                                    .addComponent(jLabel89))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNumTarjeta1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                    .addComponent(txtNombreTarjeta, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                    .addComponent(jDateVencimeinto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel90, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)))))
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -576,11 +600,17 @@ public class FrmUsuario extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel87)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel88)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel88)
+                    .addComponent(txtNombreTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel90)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel90)
+                    .addComponent(txtNumTarjeta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel89)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel89)
+                    .addComponent(jDateVencimeinto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(JBRegistrarTar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -617,6 +647,25 @@ public class FrmUsuario extends javax.swing.JFrame {
 
     private void JBRegistrarTarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRegistrarTarActionPerformed
         // TODO add your handling code here:
+
+        if (!txtNombreTarjeta.getText().isEmpty() && !txtNumTarjeta1.getText().isEmpty()) {
+            
+            int numTarjeta = Integer.parseInt(txtNumTarjeta1.getText());
+            
+            RegistroTarjeta registroTarjeta = new RegistroTarjeta(txtNombreTarjeta.getText(), numTarjeta, jDateVencimeinto.getDate());
+
+            // limpiar
+            txtNombreTarjeta.setText("");
+            txtNumTarjeta1.setText("");
+            
+            if (Principal.agregarTarjeta(registroTarjeta)) {
+                JOptionPane.showMessageDialog(this, "Se agregado su tarjeta,exitosamente");
+                System.out.println(registroTarjeta);
+                
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese los datos necesarios", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_JBRegistrarTarActionPerformed
 
     private void JBRegistrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRegistrarDatosActionPerformed
@@ -669,6 +718,14 @@ public class FrmUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtNombreTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreTarjetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreTarjetaActionPerformed
+
+    private void txtNumTarjeta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumTarjeta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumTarjeta1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -714,6 +771,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCDepartame5;
     private javax.swing.JComboBox<String> jCMunicipio5;
     private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateVencimeinto;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
@@ -752,5 +810,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodeDepart5;
     private javax.swing.JTextField txtNombreDepart5;
     private javax.swing.JTextField txtNombreMuni5;
+    private javax.swing.JTextField txtNombreTarjeta;
+    private javax.swing.JTextField txtNumTarjeta1;
     // End of variables declaration//GEN-END:variables
 }
