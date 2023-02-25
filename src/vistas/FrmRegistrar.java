@@ -423,7 +423,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
     int telefono;
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        validar();
+        // validar();
         boolean verifica = false;
 
         if (!txtNombres.getText().isEmpty()
@@ -438,19 +438,25 @@ public class FrmRegistrar extends javax.swing.JDialog {
             dpi = Integer.parseInt(txtDpi.getText());
             telefono = Integer.parseInt(txtTelefono.getText());
 
+
             _user = new User(txtCorreo.getText(), txtNombres.getText(),
                     txtApellidos.getText(), txtContraseñas.getText(), dpi, JDfecha.getDate(),
                     txtSobrenombre.getText(), telefono, JcRol.getSelectedItem().toString(),
                     jCNacionalidad.getSelectedItem().toString());
 
-            if (Principal.agregar(_user)) {
+            if (Principal.buscarContr(_user)) {
+                if (Principal.agregar(_user)) {
 
-                JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
-                System.out.println(_user);
+                    JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
+                    System.out.println(_user);
 
+                } else {
+                    JOptionPane.showMessageDialog(this, "Correo ya existente, utilice otro distinto");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Correo ya existente, utilice otro distinto");
+                JOptionPane.showMessageDialog(this, "contra insegura");
             }
+
         } else {
             JOptionPane.showMessageDialog(this, "rellene los campos necesarios");
         }

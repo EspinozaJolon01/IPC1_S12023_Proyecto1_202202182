@@ -17,6 +17,7 @@ public class RegistroTarjeta {
     private Date fechaVencimiento;
     private String nombreCompleto;
     private String direccion;
+    private String direccionDestino;
     private int NIT;
 
     public RegistroTarjeta(String nombreTarjeta, int numTarjeta, Date fechaVencimiento) {
@@ -25,9 +26,10 @@ public class RegistroTarjeta {
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    public RegistroTarjeta(String nombreCompleto, String direccion, int NIT) {
+    public RegistroTarjeta(String nombreCompleto, String direccion, String direccionDestino, int NIT) {
         this.nombreCompleto = nombreCompleto;
         this.direccion = direccion;
+        this.direccionDestino = direccionDestino;
         this.NIT = NIT;
     }
 
@@ -71,6 +73,14 @@ public class RegistroTarjeta {
         this.direccion = direccion;
     }
 
+    public String getDireccionDestino() {
+        return direccionDestino;
+    }
+
+    public void setDireccionDestino(String direccionDestino) {
+        this.direccionDestino = direccionDestino;
+    }
+
     public int getNIT() {
         return NIT;
     }
@@ -81,7 +91,7 @@ public class RegistroTarjeta {
 
     @Override
     public String toString() {
-        return "RegistroTarjeta{" + "nombreTarjeta=" + nombreTarjeta + ", numTarjeta=" + numTarjeta + ", fechaVencimiento=" + fechaVencimiento + ", nombreCompleto=" + nombreCompleto + ", direccion=" + direccion + ", NIT=" + NIT + '}';
+        return "RegistroTarjeta{" + "nombreTarjeta=" + nombreTarjeta + ", numTarjeta=" + numTarjeta + ", fechaVencimiento=" + fechaVencimiento + ", nombreCompleto=" + nombreCompleto + ", direccion=" + direccion + ", direccionDestino=" + direccionDestino + ", NIT=" + NIT + '}';
     }
 
 }

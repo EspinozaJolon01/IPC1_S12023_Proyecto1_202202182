@@ -35,9 +35,45 @@ public class UserDao {
         return n;
     }
 
+    public boolean verificarContra(User user) {
+        if (user.getPassword().length() > 8) {
+            boolean mayus = false;
+            boolean num = false;
+            boolean simbolosEspciales = false;
+            char c;
+
+            for (int i = 0; i < user.getPassword().length(); i++) {
+                String simbolos = user.getPassword();
+                c = user.getPassword().charAt(i);
+
+                if (Character.isDigit(c)) {
+                    num = true;
+                }
+                if (Character.isUpperCase(c)) {
+                    mayus = true;
+                }
+                if (simbolos.charAt(i) >= 32 && simbolos.charAt(i) <= 44) {
+                    simbolosEspciales = true;
+                }
+            }
+
+            if (num && mayus && simbolosEspciales) {
+
+                return true;
+            } else {
+                return false;
+            }
+
+        } else {
+            return false;
+        }
+
+    }
+
     //agregar usuario
     public boolean agregarUsuario(User user) {
         if (buscarUsuario(user.getCorreo()) == -1) {
+
             users.add(user);
 
             return true;

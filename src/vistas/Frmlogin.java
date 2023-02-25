@@ -247,7 +247,7 @@ public class Frmlogin extends javax.swing.JFrame {
 
             if (Principal.autentificarUser(txtUsuario.getText(), txtPassword.getText())) {
 
-              
+             
 
                 if (user.getRol().equals("Empresrial")) {
                     JOptionPane.showMessageDialog(this, "bienvenido");

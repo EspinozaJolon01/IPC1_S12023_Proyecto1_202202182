@@ -42,4 +42,28 @@ public class RegistroTarjetaDao {
         }
 
     }
+
+    //registro de datos
+    public int buscarNombres(String nombreCompleto) {
+        int m = -1;
+
+        for (int i = 0; i < registroTarjeta.size(); i++) {
+            if (registroTarjeta.get(i).getNombreCompleto().equals(nombreCompleto)) {
+                m = i;
+                break;
+
+            }
+        }
+        return m;
+    }
+
+    public boolean agregarDatosUser(RegistroTarjeta registroTarjetas) {
+        if (buscarNombres(registroTarjetas.getNombreCompleto()) != 1) {
+            registroTarjeta.add(registroTarjetas);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

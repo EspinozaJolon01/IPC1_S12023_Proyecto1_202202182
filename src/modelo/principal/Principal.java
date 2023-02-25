@@ -55,6 +55,10 @@ public class Principal {
         return usuarioDoa.obtener(correo);
     }
 
+    public static boolean buscarContr(User user) {
+        return usuarioDoa.verificarContra(user);
+    }
+
     //region
     public static boolean agregarRegion(Region region) {
         return regionDao.agregarRegion(region);
@@ -96,11 +100,15 @@ public class Principal {
         return registroTarjetaDao.AgregarTarjeta(registroTarjetas);
     }
 
+    //registro de datos tarjeta
+    public static boolean agregarDatosTarjeta(RegistroTarjeta registroTarjetos) {
+        return registroTarjetaDao.agregarDatosUser(registroTarjetos);
+    }
+
     public static void main(String[] args) {
 
-        /*
-        Frmlogin inicio =  new Frmlogin();
-        inicio.show();*/
+        Frmlogin inicio = new Frmlogin();
+        inicio.show();
     }
 
 }

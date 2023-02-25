@@ -598,6 +598,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnKiscosActionPerformed
 
+
     private void txtCodeKioscosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeKioscosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodeKioscosActionPerformed
@@ -625,7 +626,8 @@ public class FrmAdmin extends javax.swing.JFrame {
     private void txtNombreDepartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreDepartActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreDepartActionPerformed
-
+    
+   
     private void btnDepartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepartaActionPerformed
         // TODO add your handling code here:
 
@@ -641,6 +643,7 @@ public class FrmAdmin extends javax.swing.JFrame {
             if (Principal.agregarDepar(departamento)) {
                 JOptionPane.showMessageDialog(this, "Departamento creado exitosamente");
                 jCMunicipio.addItem(datosMuni);
+                
                 System.out.println(departamento);
 
             } else {

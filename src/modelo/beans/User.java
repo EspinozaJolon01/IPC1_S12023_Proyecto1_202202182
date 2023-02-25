@@ -21,7 +21,7 @@ public class User {
     private String sobreNombre;
     private int telefono;
     private String rol;
-    //  private String genero;
+   //  private String genero;
     private String nacionalidad;
 
     public User(String rol) {
