@@ -14,10 +14,21 @@ import modelo.beans.Kiosco;
  */
 public class KioscoDao {
 
-    public List<Kiosco> kiosco;
+    public static ArrayList<Kiosco> kiosco;
 
     public KioscoDao() {
         kiosco = new ArrayList<>();
+    }
+
+    //listar
+    public boolean listarKisco() {
+
+        for (int i = 0; i < kiosco.size(); i++) {
+            Kiosco e = kiosco.get(i);
+            System.out.println(e);
+
+        }
+        return false;
     }
 
     //buscar kiosko

@@ -14,10 +14,10 @@ import modelo.beans.Region;
  */
 public class RegionDao {
 
-    public List<Region> region;
+    public static ArrayList<Region> region = new ArrayList<>();
 
-    public RegionDao() {
-        region = new ArrayList<>();
+    public void RegionDao() {
+
     }
 
     //bucar codigo;

@@ -14,7 +14,7 @@ import modelo.beans.Departamento;
  */
 public class DepartamentoDao {
 
-    public List<Departamento> departamento;
+    public static ArrayList<Departamento> departamento;
 
     public DepartamentoDao() {
         departamento = new ArrayList<>();

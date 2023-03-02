@@ -4,11 +4,19 @@
  */
 package vistas;
 
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import modelo.beans.Departamento;
 import modelo.beans.Kiosco;
 import modelo.beans.Municipio;
 import modelo.beans.Region;
+import modelo.dao.DepartamentoDao;
+import modelo.dao.RegionDao;
+import static modelo.dao.RegionDao.region;
 import modelo.principal.Principal;
 
 /**
@@ -21,8 +29,51 @@ public class FrmAdmin extends javax.swing.JFrame {
      * Creates new form FrmPaginaPrinciapal
      */
     public FrmAdmin() {
+
         initComponents();
         this.setLocationRelativeTo(null);
+
+        listarRegion();
+        cargarRegionesCombobox();
+        cargarDepartamentosCombobox();
+
+    }
+
+//llenar combobox de los codigos de region
+    public void cargarRegionesCombobox() {
+        for (int i = 0; i < RegionDao.region.size(); i++) {
+            Region region = RegionDao.region.get(i);
+            jCKiscoRegion.addItem(region.getCodigo());
+            jCDepartame.addItem(region.getCodigo());
+        }
+    }
+//llenar comobobox del codigo departamento
+
+    public void cargarDepartamentosCombobox() {
+        for (int i = 0; i < DepartamentoDao.departamento.size(); i++) {
+            Departamento departamento = DepartamentoDao.departamento.get(i);
+            jCMunicipio.addItem(departamento.getCodigoDepart());
+
+        }
+    }
+    //llenar tabla de region 
+
+    public void listarRegion() {
+        DefaultTableModel defaultTableModel = new DefaultTableModel(new String[]{"Codigo", "Nombre", "precio estandar", "precio especial"}, RegionDao.region.size());
+
+        jTableRegion.setModel(defaultTableModel);
+
+        TableModel modeloDatos = jTableRegion.getModel();
+        for (int i = 0; i < RegionDao.region.size(); i++) {
+
+            Region region = RegionDao.region.get(i);
+
+            modeloDatos.setValueAt(region.getCodigo(), i, 0);
+            modeloDatos.setValueAt(region.getNombreRegion(), i, 1);
+            modeloDatos.setValueAt(region.getPrecioEstandar(), i, 2);
+            modeloDatos.setValueAt(region.getPrecioEspecial(), i, 3);
+
+        }
     }
 
     /**
@@ -36,6 +87,13 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -44,18 +102,10 @@ public class FrmAdmin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnKiscos = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtCodeRegion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtNombreKiosco = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         txtCodeKioscos = new javax.swing.JTextField();
-        txtEspeciales = new javax.swing.JTextField();
-        txtNombreRegion = new javax.swing.JTextField();
-        txtEstandar = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -78,6 +128,9 @@ public class FrmAdmin extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jCKiscoRegion = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableRegion = new javax.swing.JTable();
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modelo/img/paquete64.png"))); // NOI18N
@@ -87,6 +140,20 @@ public class FrmAdmin extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("USAC-Delivery");
+
+        jMenu4.setText("File");
+        jMenuBar2.add(jMenu4);
+
+        jMenu5.setText("Edit");
+        jMenuBar2.add(jMenu5);
+
+        jMenu6.setText("File");
+        jMenuBar3.add(jMenu6);
+
+        jMenu7.setText("Edit");
+        jMenuBar3.add(jMenu7);
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,7 +170,7 @@ public class FrmAdmin extends javax.swing.JFrame {
         btnRegion.setBackground(new java.awt.Color(0, 0, 51));
         btnRegion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegion.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegion.setText("agregar region");
+        btnRegion.setText("Modificar");
         btnRegion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegionActionPerformed(evt);
@@ -112,7 +179,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Agregar Region");
+        jLabel3.setText("Region");
 
         btnKiscos.setBackground(new java.awt.Color(0, 0, 51));
         btnKiscos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -127,13 +194,6 @@ public class FrmAdmin extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Codigo kioscos:");
-
-        txtCodeRegion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
-        txtCodeRegion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodeRegionActionPerformed(evt);
-            }
-        });
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -150,47 +210,10 @@ public class FrmAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Codigo de la region: ");
-
-        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setText("Nombre: ");
-
-        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("Precio estandar: ");
-
-        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setText("Precio especial: ");
-
         txtCodeKioscos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
         txtCodeKioscos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodeKioscosActionPerformed(evt);
-            }
-        });
-
-        txtEspeciales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
-        txtEspeciales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEspecialesActionPerformed(evt);
-            }
-        });
-
-        txtNombreRegion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
-        txtNombreRegion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreRegionActionPerformed(evt);
-            }
-        });
-
-        txtEstandar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
-        txtEstandar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstandarActionPerformed(evt);
             }
         });
 
@@ -206,12 +229,12 @@ public class FrmAdmin extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Codigo de region:");
+        jLabel13.setText("Codigo de departamento");
 
         jLabel14.setBackground(new java.awt.Color(0, 0, 0));
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Region:");
+        jLabel14.setText("codigo region:");
 
         jLabel15.setBackground(new java.awt.Color(0, 0, 0));
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -256,7 +279,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         btnDeparta.setBackground(new java.awt.Color(255, 255, 255));
         btnDeparta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeparta.setForeground(new java.awt.Color(204, 204, 255));
+        btnDeparta.setForeground(new java.awt.Color(0, 0, 51));
         btnDeparta.setText("agregar Departa");
         btnDeparta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +289,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         btnKiscos2.setBackground(new java.awt.Color(255, 255, 255));
         btnKiscos2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnKiscos2.setForeground(new java.awt.Color(204, 204, 255));
+        btnKiscos2.setForeground(new java.awt.Color(0, 0, 51));
         btnKiscos2.setText("agregar Muni");
         btnKiscos2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,6 +313,10 @@ public class FrmAdmin extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnKiscos2)
+                .addGap(39, 39, 39))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -298,16 +325,16 @@ public class FrmAdmin extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addComponent(jLabel12)))
+                                .addComponent(jLabel12))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel13)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
                             .addComponent(txtNombreDepart, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,10 +349,6 @@ public class FrmAdmin extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(btnDeparta)))
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnKiscos2)
-                .addGap(39, 39, 39))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,7 +381,7 @@ public class FrmAdmin extends javax.swing.JFrame {
                 .addComponent(txtNombreMuni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnKiscos2)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
@@ -394,9 +417,6 @@ public class FrmAdmin extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,12 +426,15 @@ public class FrmAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(84, 84, 84)
-                                .addComponent(jLabel23)))
-                        .addContainerGap())))
+                                .addComponent(jLabel23))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,9 +448,9 @@ public class FrmAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(122, 122, 122))
         );
 
         jCKiscoRegion.addActionListener(new java.awt.event.ActionListener() {
@@ -436,41 +459,48 @@ public class FrmAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 0, 0));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Modificar datos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTableRegion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Precio Estandar", "Precio Especial"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableRegion);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 298, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodeRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEspeciales, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstandar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRegion)
-                            .addComponent(btnKiscos)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -484,14 +514,18 @@ public class FrmAdmin extends javax.swing.JFrame {
                                     .addComponent(txtCodeKioscos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCKiscoRegion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                                .addComponent(jCKiscoRegion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(btnKiscos)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegion)
+                        .addGap(174, 174, 174)))
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -506,36 +540,27 @@ public class FrmAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtCodeKioscos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNombreKiosco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtNombreKiosco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnKiscos)
+                        .addGap(8, 8, 8)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jCKiscoRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnKiscos)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtCodeRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtNombreRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtEstandar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtEspeciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
                 .addComponent(btnRegion)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(66, 66, 66))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -543,18 +568,20 @@ public class FrmAdmin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -569,10 +596,6 @@ public class FrmAdmin extends javax.swing.JFrame {
     private void txtNombreKioscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreKioscoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreKioscoActionPerformed
-
-    private void txtCodeRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeRegionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodeRegionActionPerformed
 
     private void btnKiscosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKiscosActionPerformed
         // TODO add your handling code here:
@@ -603,18 +626,6 @@ public class FrmAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodeKioscosActionPerformed
 
-    private void txtEspecialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEspecialesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEspecialesActionPerformed
-
-    private void txtNombreRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreRegionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreRegionActionPerformed
-
-    private void txtEstandarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstandarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstandarActionPerformed
-
     private void txtCodeDepartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeDepartActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodeDepartActionPerformed
@@ -626,8 +637,8 @@ public class FrmAdmin extends javax.swing.JFrame {
     private void txtNombreDepartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreDepartActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreDepartActionPerformed
-    
-   
+
+
     private void btnDepartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepartaActionPerformed
         // TODO add your handling code here:
 
@@ -635,15 +646,14 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         if (!txtCodeDepart.getText().isEmpty() && !txtNombreDepart.getText().isEmpty()) {
 
-            Departamento departamento = new Departamento(txtNombreDepart.getText(), txtNombreDepart.getText(), jCDepartame.getSelectedItem().toString());
+            Departamento departamento = new Departamento(txtCodeDepart.getText(), jCDepartame.getSelectedItem().toString(), txtNombreDepart.getText());
 
             txtCodeDepart.setText("");
             txtNombreDepart.setText("");
 
             if (Principal.agregarDepar(departamento)) {
                 JOptionPane.showMessageDialog(this, "Departamento creado exitosamente");
-                jCMunicipio.addItem(datosMuni);
-                
+
                 System.out.println(departamento);
 
             } else {
@@ -660,7 +670,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         if (!txtNombreMuni.getText().isEmpty()) {
 
-            Municipio muni = new Municipio(txtNombreMuni.getText(), jCMunicipio.getSelectedItem().toString(), txtNombreDepart.getText(), txtCodeRegion.getText());
+            Municipio muni = new Municipio(txtNombreMuni.getText(), jCMunicipio.getSelectedItem().toString(), txtNombreDepart.getText(), txtCodeKioscos.getText());
 
             //limpiar 
             txtNombreMuni.setText("");
@@ -681,37 +691,15 @@ public class FrmAdmin extends javax.swing.JFrame {
 
     private void btnRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegionActionPerformed
         // TODO add your handling code here:
-        String datosCodigoRegion = txtCodeRegion.getText();
-        String datosRegi = txtCodeRegion.getText();
 
-        if (!txtCodeRegion.getText().isEmpty()
-                && !txtNombreRegion.getText().isEmpty()
-                && !txtEstandar.getText().isEmpty()
-                && !txtEspeciales.getText().isEmpty()) {
+        int modificar = jTableRegion.getSelectedRow();
 
-            double precioEspecial = Double.parseDouble(txtEstandar.getText());
-            double precioEstandar = Double.parseDouble(txtEspeciales.getText());
-
-            Region region = new Region(txtCodeRegion.getText(), txtNombreRegion.getText(), precioEspecial, precioEstandar);
-//limpiar 
-            txtCodeRegion.setText("");
-            txtNombreRegion.setText("");
-            txtEstandar.setText("");
-            txtEspeciales.setText("");
-
-            if (Principal.agregarRegion(region)) {
-                JOptionPane.showMessageDialog(this, "Creado region exitosamente");
-                //agregar al combox     
-                jCKiscoRegion.addItem(datosCodigoRegion);
-                jCDepartame.addItem(datosRegi);
-                System.out.println(region);
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Codigo ya existente, utilice otro distinto");
-            }
+        if (modificar >= 0) {
+            System.out.println("puede modificar");
         } else {
-            JOptionPane.showMessageDialog(this, "Rellene los campos necesarios");
+            JOptionPane.showMessageDialog(null, "Debes de selecionar una region", "Actualizacion", JOptionPane.QUESTION_MESSAGE);
         }
+
     }//GEN-LAST:event_btnRegionActionPerformed
 
     private void jCKiscoRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCKiscoRegionActionPerformed
@@ -733,6 +721,14 @@ public class FrmAdmin extends javax.swing.JFrame {
         cerrarSesion.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        FrmModificarDatos modificar = new FrmModificarDatos();
+        modificar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -776,11 +772,11 @@ public class FrmAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnKiscos2;
     private javax.swing.JButton btnRegion;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jCDepartame;
     private javax.swing.JComboBox<String> jCKiscoRegion;
     private javax.swing.JComboBox<String> jCMunicipio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -799,21 +795,23 @@ public class FrmAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableRegion;
     private javax.swing.JTextField txtCodeDepart;
     private javax.swing.JTextField txtCodeKioscos;
-    private javax.swing.JTextField txtCodeRegion;
-    private javax.swing.JTextField txtEspeciales;
-    private javax.swing.JTextField txtEstandar;
     private javax.swing.JTextField txtNombreDepart;
     private javax.swing.JTextField txtNombreKiosco;
     private javax.swing.JTextField txtNombreMuni;
-    private javax.swing.JTextField txtNombreRegion;
     // End of variables declaration//GEN-END:variables
 }

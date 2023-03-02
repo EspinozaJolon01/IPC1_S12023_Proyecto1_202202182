@@ -14,7 +14,7 @@ import modelo.beans.Municipio;
  */
 public class MunicipioDao {
 
-    public List<Municipio> municipio;
+    public static ArrayList<Municipio> municipio;
 
     public MunicipioDao() {
         municipio = new ArrayList<>();

@@ -4,6 +4,7 @@
  */
 package modelo.principal;
 
+import java.util.ArrayList;
 import modelo.beans.Departamento;
 import modelo.beans.Kiosco;
 import modelo.beans.Municipio;
@@ -13,9 +14,12 @@ import modelo.beans.Region;
 import modelo.beans.RegistroTarjeta;
 import modelo.dao.DepartamentoDao;
 import modelo.dao.KioscoDao;
+import static modelo.dao.KioscoDao.kiosco;
 import modelo.dao.MunicipioDao;
 import modelo.dao.RegionDao;
+import static modelo.dao.RegionDao.region;
 import modelo.dao.RegistroTarjetaDao;
+import static modelo.principal.Principal.autentificarUser;
 import vistas.Frmlogin;
 
 /**
@@ -37,6 +41,7 @@ public class Principal {
         if (obtener(correo) != null) {
 
             if (obtener(correo).getCorreo().equals(correo) && obtener(correo).getPassword().equals(password)) {
+
                 return true;
             } else {
                 return false;
@@ -45,6 +50,23 @@ public class Principal {
             return false;
         }
 
+    }
+
+    public static void agregar() {
+
+        Region region1 = new Region("M", "Metropolitana", 35, 25);
+        Region region2 = new Region("NT", "Norte", 68.50, 45.55);
+        Region region3 = new Region("NO", "Nororiente", 58.68, 35.48);
+        Region region4 = new Region("SO", "Suroriente", 38.68, 32.48);
+        Region region5 = new Region("SOC", "Suroccidente", 34.00, 29.00);
+        Region region6 = new Region("NOC", "Noroccidente", 44.50, 40.00);
+
+        region.add(region1);
+        region.add(region2);
+        region.add(region3);
+        region.add(region4);
+        region.add(region5);
+        region.add(region6);
     }
 
     public static boolean agregar(User user) {
@@ -60,8 +82,8 @@ public class Principal {
     }
 
     //region
-    public static boolean agregarRegion(Region region) {
-        return regionDao.agregarRegion(region);
+    public static boolean agregarRegion(User user) {
+        return usuarioDoa.agregarUsuario(user);
     }
 
     public static Region obtenerRegion(String codigo) {
@@ -108,7 +130,8 @@ public class Principal {
     public static void main(String[] args) {
 
         Frmlogin inicio = new Frmlogin();
-        inicio.show();
+        inicio.setVisible(true);
+        agregar();
     }
 
 }

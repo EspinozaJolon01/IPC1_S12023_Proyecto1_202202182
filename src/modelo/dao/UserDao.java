@@ -14,12 +14,20 @@ import modelo.beans.User;
  */
 public class UserDao {
 
-    public List<User> users;
+    public static ArrayList<User> users;
 
     public UserDao() {
         //inicializanando el usuario
         users = new ArrayList<>();
 
+    }
+
+    public boolean listarUsuarios() {
+        for (int i = 0; i < users.size(); i++) {
+             users.get(i);
+
+        }
+        return false;
     }
 
     //buscar el usuario
@@ -87,8 +95,25 @@ public class UserDao {
     public User obtener(String correo) {
         if (buscarUsuario(correo) != -1) {
             return users.get(buscarUsuario(correo));
+
         } else {
             return null;
         }
     }
+
+    //prueba
+    public User buscarRolUserExistente(String correo) {
+        if (buscarUsuario(correo) != -1) {
+            for (int i = 0; i < users.size(); i++) {
+                users.get(i).getRol();
+            }
+
+        } else {
+            return null;
+        }
+        return null;
+    }
+
+
+
 }

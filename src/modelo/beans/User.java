@@ -17,22 +17,18 @@ public class User {
     private String apellido;
     private String password;
     private int dpi;
-    private Date fecha;
+    private String fecha;
     private String sobreNombre;
     private int telefono;
     private String rol;
-   //  private String genero;
+    private String genero;
     private String nacionalidad;
 
     public User(String rol) {
 
     }
 
-    public User(String correo, String password, String rol) {
-
-    }
-
-    public User(String correo, String nombre, String apellido, String password, int dpi, Date fecha, String sobreNombre, int telefono, String rol, String nacionalidad) {
+    public User(String correo, String nombre, String apellido, String password, int dpi, String fecha, String sobreNombre, int telefono, String rol, String nacionalidad, String genero) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.password = password;
@@ -43,12 +39,18 @@ public class User {
         this.telefono = telefono;
         this.rol = rol;
         this.nacionalidad = nacionalidad;
-        //   this.genero = genero;
+        this.genero = genero;
 
     }
 
     public User() {
 
+    }
+
+    public User(String correo, String password, String rol) {
+        this.correo = correo;
+        this.password = password;
+        this.rol = rol;
     }
 
     public String getCorreo() {
@@ -91,11 +93,11 @@ public class User {
         this.dpi = dpi;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -131,8 +133,6 @@ public class User {
         this.nacionalidad = nacionalidad;
     }
 
-    /*
-
     public String getGenero() {
         return genero;
     }
@@ -141,16 +141,9 @@ public class User {
         this.genero = genero;
     }
 
-
-
-
-
-
-    
-     */
     @Override
     public String toString() {
-        return "User{" + "correo=" + correo + ", nombre=" + nombre + ", apellido=" + apellido + ", password=" + password + ", dpi=" + dpi + ", fecha=" + fecha + ", sobreNombre=" + sobreNombre + ", telefono=" + telefono + ", rol=" + rol + ", nacionalidad=" + nacionalidad + '}';
+        return "User{" + "correo=" + correo + ", nombre=" + nombre + ", apellido=" + apellido + ", password=" + password + ", dpi=" + dpi + ", fecha=" + fecha + ", sobreNombre=" + sobreNombre + ", telefono=" + telefono + ", rol=" + rol + ", genero=" + genero + ", nacionalidad=" + nacionalidad + '}';
     }
 
 }

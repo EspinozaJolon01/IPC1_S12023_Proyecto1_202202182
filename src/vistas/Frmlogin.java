@@ -23,6 +23,8 @@ public class Frmlogin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
+        Principal.agregar(new User("admin", "admin", "admin"));
+
     }
 
     /**
@@ -239,42 +241,18 @@ public class Frmlogin extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         User user = FrmRegistrar.getUser();
+        System.out.println(user);
+
         //  User users = FrmRegistrar.getAdmin();
-
-     //   User userAdmin = new User("admin", "123", "admin");
-
         if (!txtUsuario.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
 
             if (Principal.autentificarUser(txtUsuario.getText(), txtPassword.getText())) {
-
-             
-
-                if (user.getRol().equals("Empresrial")) {
-                    JOptionPane.showMessageDialog(this, "bienvenido");
-                    this.dispose();
-                    FrmEmpresarial frmEmpresarial = new FrmEmpresarial();
-                    frmEmpresarial.setVisible(true);
-
-                } else if (user.getRol().equals("Indiviual")) {
-                    JOptionPane.showMessageDialog(this, "bienvenido");
-                    this.dispose();
-                    FrmUsuario frmUsuario = new FrmUsuario();
-                    frmUsuario.setVisible(true);
-
-                    //falta validar que entre un administrador
-                } else if (user.getRol().equals("Kiosco")) {
-                    JOptionPane.showMessageDialog(this, "bienvenido");
-                    this.dispose();
-                    FrmAdmin frmAdmin = new FrmAdmin();
-                    frmAdmin.setVisible(true);
-
-                }
 
             } else {
                 JOptionPane.showMessageDialog(this, "Contrenia o usuario incorrecto", "mensaje de error", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Falta ingresar usuario o contrasenia ","error de mensaje", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Falta ingresar usuario o contrasenia ", "error de mensaje", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnIngresarActionPerformed
