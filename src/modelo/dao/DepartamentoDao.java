@@ -41,6 +41,18 @@ public class DepartamentoDao {
             return false;
         }
     }
+    
+    //actualizar
+    
+    public void modificarDepartamento(String codigoDepart, String nombreDepart){
+        for (Departamento departamento1 : departamento) {
+            if(departamento1.getCodigoDepart().equals(codigoDepart)){
+                
+                departamento1.setNombreDepart(nombreDepart);
+                
+            }
+        }
+    }
 
     //obner
     public Departamento obtenerDepartemento(String codigoDepart) {

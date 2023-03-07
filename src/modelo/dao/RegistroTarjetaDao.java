@@ -14,56 +14,51 @@ import modelo.beans.RegistroTarjeta;
  */
 public class RegistroTarjetaDao {
 
-    public List<RegistroTarjeta> registroTarjeta;
+    public ArrayList<RegistroTarjeta> registroTarjeta;
+    public ArrayList<RegistroTarjeta> registroDatosTarjeta;
 
     public RegistroTarjetaDao() {
         registroTarjeta = new ArrayList<>();
+        registroDatosTarjeta = new ArrayList<>();
     }
 
     //buscar
-    public int buscarTarjeta(String nombreTarjeta) {
-        int n = -1;
-        for (int i = 0; i < registroTarjeta.size(); i++) {
-            if (registroTarjeta.get(i).getNombreTarjeta().equals(nombreTarjeta)) {
-                n = i;
-                break;
-            }
-
-        }
-        return n;
-    }
-
+//    public int buscarTarjeta(String nombreTarjeta) {
+//        int n = -1;
+//        for (int i = 0; i < registroTarjeta.size(); i++) {
+//            if (registroTarjeta.get(i).getNombreTarjeta().equals(nombreTarjeta)) {
+//                n = i;
+//                break;
+//            }
+//
+//        }
+//        return n;
+//    }
     public boolean AgregarTarjeta(RegistroTarjeta registroTarjetas) {
-        if (buscarTarjeta(registroTarjetas.getNombreTarjeta()) != 1) {
-            registroTarjeta.add(registroTarjetas);
-            return true;
-        } else {
-            return false;
-        }
+
+        registroTarjeta.add(registroTarjetas);
+        return true;
 
     }
 
     //registro de datos
-    public int buscarNombres(String nombreCompleto) {
-        int m = -1;
-
-        for (int i = 0; i < registroTarjeta.size(); i++) {
-            if (registroTarjeta.get(i).getNombreCompleto().equals(nombreCompleto)) {
-                m = i;
-                break;
-
-            }
-        }
-        return m;
-    }
-
+//    public int buscarNombres(String nombreCompleto) {
+//        int m = -1;
+//
+//        for (int i = 0; i < registroTarjeta.size(); i++) {
+//            if (registroTarjeta.get(i).getNombreCompleto().equals(nombreCompleto)) {
+//                m = i;
+//                break;
+//
+//            }
+//        }
+//        return m;
+//    }
     public boolean agregarDatosUser(RegistroTarjeta registroTarjetas) {
-        if (buscarNombres(registroTarjetas.getNombreCompleto()) != 1) {
-            registroTarjeta.add(registroTarjetas);
-            return true;
-        } else {
-            return false;
-        }
+
+        registroTarjeta.add(registroTarjetas);
+        return true;
+
     }
 
 }

@@ -42,6 +42,15 @@ public class MunicipioDao {
         }
     }
 
+    //modificar
+    public void modificarMunicion(String nombreMuni, String codigoDepart) {
+        for (Municipio municipio1 : municipio) {
+
+            municipio1.setNombreMuni(nombreMuni);
+
+        }
+    }
+
     //obtener
     public Municipio obtenerMuni(String nombreMuni) {
         if (buscarMuni(nombreMuni) != -1) {

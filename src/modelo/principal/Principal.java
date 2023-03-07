@@ -19,7 +19,9 @@ import modelo.dao.MunicipioDao;
 import modelo.dao.RegionDao;
 import static modelo.dao.RegionDao.region;
 import modelo.dao.RegistroTarjetaDao;
+import static modelo.dao.UserDao.users;
 import static modelo.principal.Principal.autentificarUser;
+import vistas.FrmModificarDatos;
 import vistas.Frmlogin;
 
 /**
@@ -52,7 +54,13 @@ public class Principal {
 
     }
 
-    public static void agregar() {
+    public static void crearAdmin() {
+        User admin = new User("admin", "admin", "admin");
+        users.add(admin);
+        System.out.println(admin);
+    }
+
+    public static void agregarRegion() {
 
         Region region1 = new Region("M", "Metropolitana", 35, 25);
         Region region2 = new Region("NT", "Norte", 68.50, 45.55);
@@ -67,6 +75,7 @@ public class Principal {
         region.add(region4);
         region.add(region5);
         region.add(region6);
+
     }
 
     public static boolean agregar(User user) {
@@ -81,9 +90,13 @@ public class Principal {
         return usuarioDoa.verificarContra(user);
     }
 
+    public static User buscarRol(String correo) {
+        return usuarioDoa.buscarRolUserExistente(correo);
+    }
+
     //region
-    public static boolean agregarRegion(User user) {
-        return usuarioDoa.agregarUsuario(user);
+    public static void editarRegion(String codigo, double precioEstandar, double precioEspecial) {
+        regionDao.modificarRegion(codigo, precioEstandar, precioEspecial);
     }
 
     public static Region obtenerRegion(String codigo) {
@@ -99,6 +112,10 @@ public class Principal {
         return kioscoDao.obtenerKisco(codigoKiosco);
     }
 
+    public static void editarKiosco(String codigoKiosco, String nombreKiosco) {
+        kioscoDao.modificarKiosco(codigoKiosco, nombreKiosco);
+    }
+
     //deparmentos
     public static boolean agregarDepar(Departamento departamentos) {
         return departamentoDao.agregarDepar(departamentos);
@@ -108,6 +125,10 @@ public class Principal {
         return departamentoDao.obtenerDepartemento(codigoDepart);
     }
 
+    public static void editarDepartamento(String codigoDepart, String nombreDepart) {
+        departamentoDao.modificarDepartamento(codigoDepart, nombreDepart);
+    }
+
     //municipio
     public static boolean agregarMuni(Municipio municipios) {
         return municipioDao.agregarMuni(municipios);
@@ -115,6 +136,10 @@ public class Principal {
 
     public static Municipio obtenerMuni(String nombreMuni) {
         return municipioDao.obtenerMuni(nombreMuni);
+    }
+
+    public static void editarMunicipio(String nombreMuni, String codigoDepart) {
+        municipioDao.modificarMunicion(nombreMuni, codigoDepart);
     }
 
     //registro de tarjeta
@@ -131,7 +156,9 @@ public class Principal {
 
         Frmlogin inicio = new Frmlogin();
         inicio.setVisible(true);
-        agregar();
+        agregarRegion();
+        crearAdmin();
+
     }
 
 }

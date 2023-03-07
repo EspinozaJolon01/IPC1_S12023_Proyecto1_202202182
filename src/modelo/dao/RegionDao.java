@@ -43,6 +43,17 @@ public class RegionDao {
         }
     }
 
+    //Actualizar regiones
+    public void modificarRegion(String codigo, double precioEstandar, double precioEspecial) {
+        for (Region region1 : region) {
+            if (region1.getCodigo().equals(codigo)) {
+                region1.setPrecioEspecial(precioEspecial);
+                region1.setPrecioEstandar(precioEstandar);
+            }
+
+        }
+    }
+
     //buscar kioco
     public Region obtenerRegion(String codigo) {
         if (buscarCodigo(codigo) != -1) {

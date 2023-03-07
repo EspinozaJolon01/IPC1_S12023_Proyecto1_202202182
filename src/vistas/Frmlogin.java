@@ -248,6 +248,17 @@ public class Frmlogin extends javax.swing.JFrame {
 
             if (Principal.autentificarUser(txtUsuario.getText(), txtPassword.getText())) {
 
+                for (int i = 0; i < UserDao.users.size(); i++) {
+                    if (txtUsuario.getText().equals("admin") && txtPassword.getText().equals("admin")) {
+                        JOptionPane.showMessageDialog(rootPane, "bienvenido admin");
+                        FrmAdmin admin = new FrmAdmin();
+                        admin.setVisible(true);
+                        dispose();
+                        break;
+                    }
+
+                }
+
             } else {
                 JOptionPane.showMessageDialog(this, "Contrenia o usuario incorrecto", "mensaje de error", JOptionPane.WARNING_MESSAGE);
             }

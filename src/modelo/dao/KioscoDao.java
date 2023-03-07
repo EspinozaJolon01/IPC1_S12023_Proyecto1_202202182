@@ -55,6 +55,15 @@ public class KioscoDao {
         }
     }
 
+    //actualizar
+    public void modificarKiosco(String codigoKiosco, String nombreKiosco) {
+        for (Kiosco kiosco1 : kiosco) {
+            if (kiosco1.getCodigoKiosco().equals(codigoKiosco)) {
+                kiosco1.setNombreKiosco(nombreKiosco);
+            }
+        }
+    }
+
     //buscar kiosco
     public Kiosco obtenerKisco(String codigoKiosco) {
         if (buscarKiosco(codigoKiosco) != -1) {

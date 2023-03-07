@@ -24,7 +24,7 @@ public class UserDao {
 
     public boolean listarUsuarios() {
         for (int i = 0; i < users.size(); i++) {
-             users.get(i);
+            users.get(i);
 
         }
         return false;
@@ -101,6 +101,16 @@ public class UserDao {
         }
     }
 
+    //obntener roles
+    User obtenerRol(String rol) {
+        for (User user : users) {
+            if (user.getRol().equals(rol)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     //prueba
     public User buscarRolUserExistente(String correo) {
         if (buscarUsuario(correo) != -1) {
@@ -113,7 +123,5 @@ public class UserDao {
         }
         return null;
     }
-
-
 
 }
