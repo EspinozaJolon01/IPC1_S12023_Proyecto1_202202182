@@ -4,16 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmAdmin.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/Municipio.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmPerfil.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/principal/Principal.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/UserDao.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmUsuario1.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmUsuario.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmRegistrar.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/venta.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmKiosko.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/User.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmPerfil.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/principal/Principal.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/UserDao.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/KioscoDao.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/Departamento.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/RegionDao.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/MunicipioDao.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/Frmlogin.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/DepartamentoDao.java</file>
         </group>
     </open-files>
 </project-private>

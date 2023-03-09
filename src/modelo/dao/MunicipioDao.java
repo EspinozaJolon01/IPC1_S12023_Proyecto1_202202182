@@ -60,4 +60,16 @@ public class MunicipioDao {
         }
     }
 
+    //Buscar todos los municipios por codigo de departamento
+    public static ArrayList searchMunicipalityByDepartmentCode(String departamentCode) {
+        ArrayList municipality = new ArrayList<>();
+
+        for (int i = 0; i < municipio.size(); i++) {
+            if (municipio.get(i).getCodigoDepart().equalsIgnoreCase(departamentCode)) {
+                municipality.add(municipio.get(i));
+            }
+        }
+        return municipality;
+    }
+
 }

@@ -4,14 +4,23 @@
  */
 package vistas;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.beans.Departamento;
+import modelo.beans.Municipio;
 import modelo.dao.DepartamentoDao;
+import modelo.dao.MunicipioDao;
+import modelo.dao.RegionDao;
+import modelo.principal.Principal;
 
 /**
  *
  * @author Usuario
  */
 public class FrmUsuario1 extends javax.swing.JFrame {
+
+    double prices[];
 
     /**
      * Creates new form FrmUsuario1
@@ -20,9 +29,15 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         cargarDepartamentosCombobox();
+
+        conversion = 50;
     }
 
     public void cargarDepartamentosCombobox() {
+        Principal.agregarRegion();
+        Principal.agregarDepar();
+        Principal.agregarMunicipio();
+
         for (int i = 0; i < DepartamentoDao.departamento.size(); i++) {
             Departamento departamento = DepartamentoDao.departamento.get(i);
             jComboBoxDeO.addItem(departamento.getNombreDepart());
@@ -42,6 +57,9 @@ public class FrmUsuario1 extends javax.swing.JFrame {
 
         jTextFieldCotizacion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel107 = new javax.swing.JLabel();
         jLabel106 = new javax.swing.JLabel();
@@ -73,6 +91,8 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        radio1 = new javax.swing.JRadioButton();
+        radio2 = new javax.swing.JRadioButton();
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -162,8 +182,10 @@ public class FrmUsuario1 extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setEditable(false);
         jTextField3.setText("50");
 
+        jTextField4.setEditable(false);
         jTextField4.setText("100");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +193,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
             }
         });
 
+        jTextField2.setEditable(false);
         jTextField2.setText("150");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +221,27 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 0, 51));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radio1);
+        radio1.setText("Precio 1");
+        radio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radio2);
+        radio2.setText("Precio 2");
+        radio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -229,7 +273,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jComboBoxDeO, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 22, Short.MAX_VALUE))
+                                .addGap(0, 30, Short.MAX_VALUE))
                             .addComponent(jTextField6)
                             .addComponent(jComboBoxMuOr, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(41, 41, 41)
@@ -240,7 +284,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                                 .addComponent(jLabel123)
                                 .addGap(28, 28, 28)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 23, Short.MAX_VALUE))
+                                .addGap(0, 30, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel121)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -258,12 +302,15 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(24, 24, 24))))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(JBCotizar)
+                .addGap(85, 85, 85)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldCotizacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jLabel122)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNcajas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -282,17 +329,20 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(radio2)
+                            .addComponent(radio1)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(23, 23, 23)
+                                    .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(175, 175, 175)
+                                    .addComponent(jLabel122)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtNcajas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(324, 324, 324))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(JBCotizar)
-                .addGap(85, 85, 85)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldCotizacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +377,11 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNcajas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(radio1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radio2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(jLabel112)
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -374,7 +428,22 @@ public class FrmUsuario1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxDeOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDeOActionPerformed
-        // TODO add your handling code here:
+        jComboBoxMuOr.removeAllItems();
+
+        String selectedDepartment = jComboBoxDeO.getSelectedItem().toString();
+        String departmentCode = DepartamentoDao.searchDeapartmentByName(selectedDepartment);
+        String regionCode = DepartamentoDao.searchDeapartmentByNameAndReturnRegionCode(selectedDepartment);
+        prices = RegionDao.searchCodeAndReturnPrices(regionCode);
+
+        radio1.setText(String.valueOf("Precio estandar: " + prices[0]));
+        radio2.setText(String.valueOf("Precio especial: " + prices[1]));
+
+        ArrayList<Municipio> municipality = MunicipioDao.searchMunicipalityByDepartmentCode(departmentCode);
+
+        for (int i = 0; i < municipality.size(); i++) {
+            Municipio municipalityItem = municipality.get(i);
+            jComboBoxMuOr.addItem(municipalityItem.getNombreMuni());
+        }
     }//GEN-LAST:event_jComboBoxDeOActionPerformed
 
     private void txtNcajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNcajasActionPerformed
@@ -388,31 +457,55 @@ public class FrmUsuario1 extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
-    double numero;
+
+    double conversion;
+    double selectedPrice;
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
 
-        if (jComboBox1.getSelectedItem().equals("pequeño")) {
-            numero = 50;
+        if (jComboBox1.getSelectedItem().equals("pequenio")) {
+            conversion = 50;
         } else if (jComboBox1.getSelectedItem().equals("mediano")) {
-            numero = 100;
+            conversion = 100;
         } else if (jComboBox1.getSelectedItem().equals("grande")) {
-            numero = 150;
+            conversion = 150;
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void JBCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCotizarActionPerformed
         // TODO add your handling code here:
 
-        double num1, total, ncajas;
+        if (!txtNcajas.getText().isEmpty()) {
+            double total, ncajas;
 
-        ncajas = Integer.parseInt(txtNcajas.getText());
+            ncajas = Integer.parseInt(txtNcajas.getText());
 
-        total = (numero * ncajas);
+            total = ((conversion * ncajas) * selectedPrice);
 
-        jTextFieldCotizacion1.setText(String.valueOf(total));
+            jTextFieldCotizacion1.setText(String.valueOf(total));
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe de agregar los campos necesarios", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_JBCotizarActionPerformed
+
+    private void radio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio1ActionPerformed
+        selectedPrice = prices[0];
+    }//GEN-LAST:event_radio1ActionPerformed
+
+    private void radio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio2ActionPerformed
+        selectedPrice = prices[1];
+    }//GEN-LAST:event_radio2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        FrmUsuario frmUsuario = new FrmUsuario(null);
+        frmUsuario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,6 +544,9 @@ public class FrmUsuario1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCotizar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxDD;
@@ -482,6 +578,8 @@ public class FrmUsuario1 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextFieldCotizacion;
     private javax.swing.JTextField jTextFieldCotizacion1;
+    private javax.swing.JRadioButton radio1;
+    private javax.swing.JRadioButton radio2;
     private javax.swing.JTextField txtNcajas;
     // End of variables declaration//GEN-END:variables
 }

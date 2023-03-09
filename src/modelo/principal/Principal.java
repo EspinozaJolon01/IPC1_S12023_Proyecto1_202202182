@@ -96,9 +96,13 @@ public class Principal {
 
         Municipio municipio1 = new Municipio("flores", "gtPete", "Peten", "M");
         Municipio municipio2 = new Municipio("coban", "gtAltaVerapaz", "Alta Verapaz", "NT");
+        Municipio municipio3 = new Municipio("cubulco", "gtBajaVerapaz", "Baja Verapaz", "NT");
+        Municipio municipio4 = new Municipio("rabinal", "gtBajaVerapaz", "Baja Verapaz", "NT");
 
         municipio.add(municipio1);
         municipio.add(municipio2);
+        municipio.add(municipio3);
+        municipio.add(municipio4);
 
     }
 

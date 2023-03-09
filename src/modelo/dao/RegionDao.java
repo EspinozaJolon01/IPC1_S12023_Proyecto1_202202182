@@ -63,4 +63,18 @@ public class RegionDao {
         }
     }
 
+    public static double[] searchCodeAndReturnPrices(String codigo) {
+        double[] prices = new double[2];
+
+        for (int i = 0; i < region.size(); i++) {
+            if (region.get(i).getCodigo().equals(codigo)) {
+                prices[0] = region.get(i).getPrecioEstandar();
+                prices[1] = region.get(i).getPrecioEspecial();
+                return prices;
+            }
+        }
+
+        return null;
+    }
+
 }
