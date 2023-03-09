@@ -240,23 +240,37 @@ public class Frmlogin extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
 
-        User user = FrmRegistrar.getUser();
-        System.out.println(user);
-
         //  User users = FrmRegistrar.getAdmin();
         if (!txtUsuario.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
 
-            if (Principal.autentificarUser(txtUsuario.getText(), txtPassword.getText())) {
+            if (Principal.obtenerDatosPorUsuarioYContrasenia(txtUsuario.getText(), txtPassword.getText()) != null) {
+                User user = Principal.obtenerDatosPorUsuarioYContrasenia(txtUsuario.getText(), txtPassword.getText());
 
-                for (int i = 0; i < UserDao.users.size(); i++) {
-                    if (txtUsuario.getText().equals("admin") && txtPassword.getText().equals("admin")) {
-                        JOptionPane.showMessageDialog(rootPane, "bienvenido admin");
-                        FrmAdmin admin = new FrmAdmin();
-                        admin.setVisible(true);
+                switch (user.getRol()) {
+                    case "admin":
+                        JOptionPane.showMessageDialog(this, "bienvenido " + user.getCorreo());
+                        FrmAdmin frmAdmin = new FrmAdmin();
+                        frmAdmin.setVisible(true);
                         dispose();
                         break;
-                    }
 
+                    case "Indiviual":
+                        JOptionPane.showMessageDialog(this, "bienvenido " + user.getCorreo());
+
+                        FrmUsuario frmUsuario = new FrmUsuario(Principal.obtener(txtUsuario.getText()));
+                        frmUsuario.setVisible(true);
+                        dispose();
+                        break;
+
+                    case "Kiosco":
+                        JOptionPane.showMessageDialog(this, "bienvenido " + user.getCorreo());
+                        FrmKiosko frmKiosko = new FrmKiosko();
+                        frmKiosko.setVisible(true);
+                        dispose();
+                        break;
+
+                    default:
+                        System.out.println("NO EXISTE ESTE ROL");
                 }
 
             } else {
@@ -272,6 +286,7 @@ public class Frmlogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmRegistrar frmRegistrar = new FrmRegistrar(this, true);
         frmRegistrar.setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_btnRegistroActionPerformed
 

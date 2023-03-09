@@ -101,14 +101,23 @@ public class UserDao {
         }
     }
 
-    //obntener roles
-    User obtenerRol(String rol) {
-        for (User user : users) {
-            if (user.getRol().equals(rol)) {
-                return user;
+    //verificar sin existe el usuario
+    public User obtenerDatosPorUsuarioYContrasenia(String correo, String password) {
+        if (buscarDatosPorUsuarioYContrasenia(correo, password) != -1) {
+            return users.get(buscarDatosPorUsuarioYContrasenia(correo, password));
+        } else {
+            return null;
+        }
+    }
+
+    //buscar el usuario
+    public int buscarDatosPorUsuarioYContrasenia(String correo, String password) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getCorreo().equals(correo) && users.get(i).getPassword().equals(password)) {
+                return i;
             }
         }
-        return null;
+        return -1;
     }
 
     //prueba

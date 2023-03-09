@@ -836,7 +836,7 @@ public class FrmAdmin extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        FrmUsuario user = new FrmUsuario();
+        FrmUsuario user = new FrmUsuario(null);
         user.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed

@@ -13,9 +13,11 @@ import modelo.dao.UserDao;
 import modelo.beans.Region;
 import modelo.beans.RegistroTarjeta;
 import modelo.dao.DepartamentoDao;
+import static modelo.dao.DepartamentoDao.departamento;
 import modelo.dao.KioscoDao;
 import static modelo.dao.KioscoDao.kiosco;
 import modelo.dao.MunicipioDao;
+import static modelo.dao.MunicipioDao.municipio;
 import modelo.dao.RegionDao;
 import static modelo.dao.RegionDao.region;
 import modelo.dao.RegistroTarjetaDao;
@@ -40,9 +42,9 @@ public class Principal {
     //verificar 
     public static boolean autentificarUser(String correo, String password) {
 
-        if (obtener(correo) != null) {
+        if (obtenerDatosPorUsuarioYContrasenia(correo, password) != null) {
 
-            if (obtener(correo).getCorreo().equals(correo) && obtener(correo).getPassword().equals(password)) {
+            if (obtenerDatosPorUsuarioYContrasenia(correo, password).getCorreo().equals(correo) && obtenerDatosPorUsuarioYContrasenia(correo, password).getPassword().equals(password)) {
 
                 return true;
             } else {
@@ -57,7 +59,7 @@ public class Principal {
     public static void crearAdmin() {
         User admin = new User("admin", "admin", "admin");
         users.add(admin);
-        System.out.println(admin);
+
     }
 
     public static void agregarRegion() {
@@ -76,6 +78,32 @@ public class Principal {
         region.add(region5);
         region.add(region6);
 
+    }
+
+    public static void agregarDepar() {
+
+        Departamento Departamento1 = new Departamento("gtPete", "Peten", "M");
+        Departamento Departamento2 = new Departamento("gtAltaVerapaz", "Alta Verapaz", "NT");
+        Departamento Departamento3 = new Departamento("gtBajaVerapaz", "Baja Verapaz", "NO");
+
+        departamento.add(Departamento1);
+        departamento.add(Departamento2);
+        departamento.add(Departamento3);
+
+    }
+
+    public static void agregarMunicipio() {
+
+        Municipio municipio1 = new Municipio("flores", "gtPete", "Peten", "M");
+        Municipio municipio2 = new Municipio("coban", "gtAltaVerapaz", "Alta Verapaz", "NT");
+
+        municipio.add(municipio1);
+        municipio.add(municipio2);
+
+    }
+
+    public static User obtenerDatosPorUsuarioYContrasenia(String correo, String password) {
+        return usuarioDoa.obtenerDatosPorUsuarioYContrasenia(correo, password);
     }
 
     public static boolean agregar(User user) {
@@ -158,6 +186,8 @@ public class Principal {
         inicio.setVisible(true);
         agregarRegion();
         crearAdmin();
+        agregarDepar();
+        agregarMunicipio();
 
     }
 
