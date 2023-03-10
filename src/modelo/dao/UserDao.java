@@ -43,6 +43,17 @@ public class UserDao {
         return n;
     }
 
+    //
+    public static String buscarUsuarioTarjeta(String correo) {
+
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getCorreo().equals(correo)) {
+                return users.get(i).getCorreo();
+            }
+        }
+        return null;
+    }
+
     public boolean verificarContra(User user) {
         if (user.getPassword().length() > 8) {
             boolean mayus = false;
@@ -138,7 +149,7 @@ public class UserDao {
 
         for (User user : users) {
             if (user.getCorreo().equals(correo)) {
-                
+
                 user.setApellido(apellido);
                 user.setNombre(nombre);
                 user.setCorreo(correo);

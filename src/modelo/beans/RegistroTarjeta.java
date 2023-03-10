@@ -10,27 +10,18 @@ import java.util.Date;
  *
  * @author Usuario
  */
-public class RegistroTarjeta {
+public class RegistroTarjeta extends User {
 
     private String nombreTarjeta;
-    private int numTarjeta;
+    private String numTarjeta;
     private String fechaVencimiento;
-    private String nombreCompleto;
-    private String direccion;
-    private String direccionDestino;
-    private int NIT;
 
-    public RegistroTarjeta(String nombreTarjeta, int numTarjeta, String fechaVencimiento) {
+    public RegistroTarjeta(String nombreTarjeta, String numTarjeta, String fechaVencimiento, String correo) {
+        super(correo);
         this.nombreTarjeta = nombreTarjeta;
         this.numTarjeta = numTarjeta;
         this.fechaVencimiento = fechaVencimiento;
-    }
-
-    public RegistroTarjeta(String nombreCompleto, String direccion, String direccionDestino, int NIT) {
-        this.nombreCompleto = nombreCompleto;
-        this.direccion = direccion;
-        this.direccionDestino = direccionDestino;
-        this.NIT = NIT;
+        this.correo = correo;
     }
 
     public String getNombreTarjeta() {
@@ -41,11 +32,11 @@ public class RegistroTarjeta {
         this.nombreTarjeta = nombreTarjeta;
     }
 
-    public int getNumTarjeta() {
+    public String getNumTarjeta() {
         return numTarjeta;
     }
 
-    public void setNumTarjeta(int numTarjeta) {
+    public void setNumTarjeta(String numTarjeta) {
         this.numTarjeta = numTarjeta;
     }
 
@@ -57,41 +48,9 @@ public class RegistroTarjeta {
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getDireccionDestino() {
-        return direccionDestino;
-    }
-
-    public void setDireccionDestino(String direccionDestino) {
-        this.direccionDestino = direccionDestino;
-    }
-
-    public int getNIT() {
-        return NIT;
-    }
-
-    public void setNIT(int NIT) {
-        this.NIT = NIT;
-    }
-
     @Override
     public String toString() {
-        return "RegistroTarjeta{" + "nombreTarjeta=" + nombreTarjeta + ", numTarjeta=" + numTarjeta + ", fechaVencimiento=" + fechaVencimiento + ", nombreCompleto=" + nombreCompleto + ", direccion=" + direccion + ", direccionDestino=" + direccionDestino + ", NIT=" + NIT + '}';
+        return "RegistroTarjeta{" + "nombreTarjeta=" + nombreTarjeta + ", numTarjeta=" + numTarjeta + ", fechaVencimiento=" + fechaVencimiento + ", correo=" + correo + '}';
     }
-    
+
 }

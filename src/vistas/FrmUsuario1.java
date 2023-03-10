@@ -7,12 +7,17 @@ package vistas;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.beans.DatosFacturacion;
 import modelo.beans.Departamento;
 import modelo.beans.Municipio;
+import modelo.beans.RegistroTarjeta;
 import modelo.beans.User;
+import modelo.dao.DatosFacturacionDao;
 import modelo.dao.DepartamentoDao;
 import modelo.dao.MunicipioDao;
 import modelo.dao.RegionDao;
+import modelo.dao.RegistroTarjetaDao;
+import modelo.dao.UserDao;
 import modelo.principal.Principal;
 
 /**
@@ -30,16 +35,16 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         cargarDepartamentosCombobox();
-        //   jTextField1.setText(users.getCorreo());
+        jTextField1.setText(users.getCorreo());
 
         conversion = 50;
 
     }
 
     public void cargarDepartamentosCombobox() {
-        Principal.agregarRegion();
-        Principal.agregarDepar();
-        Principal.agregarMunicipio();
+        // Principal.agregarRegion();
+        // Principal.agregarDepar();
+        // Principal.agregarMunicipio();
 
         for (int i = 0; i < DepartamentoDao.departamento.size(); i++) {
             Departamento departamento = DepartamentoDao.departamento.get(i);
@@ -108,6 +113,13 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel130 = new javax.swing.JLabel();
         jTextFieldCVV = new javax.swing.JTextField();
+        jLabel131 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel111 = new javax.swing.JLabel();
+        jLabel132 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jLabel133 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
@@ -296,6 +308,11 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         jLabel129.setText("Escoger tarjetas");
 
         jComboBox3.setEnabled(false);
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setForeground(new java.awt.Color(0, 0, 51));
@@ -316,6 +333,44 @@ public class FrmUsuario1 extends javax.swing.JFrame {
 
         jTextFieldCVV.setEnabled(false);
 
+        jLabel131.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel131.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel131.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel131.setText("Nombre");
+
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+
+        jLabel111.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel111.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel111.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel111.setText("Datos de facturacion");
+
+        jLabel132.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel132.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel132.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel132.setText("Direccion");
+
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
+
+        jLabel133.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel133.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel133.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel133.setText("NIT");
+
+        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -323,26 +378,20 @@ public class FrmUsuario1 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBoxOcpiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(128, 128, 128)))
-                        .addComponent(jButton2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxOcpiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(26, 26, 26)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12))))
+                        .addGap(34, 34, 34))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel127)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -350,7 +399,6 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                         .addGap(17, 17, 17))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel128)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel129)
@@ -358,8 +406,28 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                                 .addGap(54, 54, 54)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBox3, 0, 118, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldCVV))))
-                        .addGap(0, 10, Short.MAX_VALUE))))
+                                    .addComponent(jTextFieldCVV)))
+                            .addComponent(jLabel127)
+                            .addComponent(jLabel128)
+                            .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel131)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel132))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addGap(79, 79, 79)
+                                        .addComponent(jLabel133)
+                                        .addGap(33, 33, 33)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton2))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(34, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,13 +455,33 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel130)
                     .addComponent(jTextFieldCVV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel131)
+                            .addComponent(jLabel132)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel133))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(119, 119, 119)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4)
+                    .addComponent(jButton3))
+                .addGap(58, 58, 58))
         );
 
         jTextField1.setEditable(false);
@@ -493,7 +581,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -556,7 +644,9 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCotizacion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -663,13 +753,63 @@ public class FrmUsuario1 extends javax.swing.JFrame {
 
         if (jComboBoxOcpiones.getSelectedItem().equals("opción 1")) {
             sumaPorRecargo = 5;
+
+            jComboBox5.removeAllItems();
+            jComboBox4.removeAllItems();
+            jComboBox6.removeAllItems();
+
+            String selectedUser = jTextField1.getText();
+            String usario = UserDao.buscarUsuarioTarjeta(selectedUser);
+
+            ArrayList<DatosFacturacion> datosFacturacionDao = DatosFacturacionDao.buscarumeroTarjeta(usario);
+
+            for (int i = 0; i < datosFacturacionDao.size(); i++) {
+                DatosFacturacion datos = datosFacturacionDao.get(i);
+
+                jComboBox5.addItem(datos.getNombreCompleto());
+                jComboBox4.addItem(datos.getDireccion());
+                jComboBox6.addItem(datos.getNIT());
+            }
+
         } else {
             sumaPorRecargo = 0;
+
         }
 
         if (jComboBoxOcpiones.getSelectedItem().equals("opción 2")) {
             jComboBox3.setEnabled(true);
             jTextFieldCVV.setEnabled(true);
+
+            jComboBox3.removeAllItems();
+
+            String selectedCorreo = jTextField1.getText();
+            String usuarioCode = UserDao.buscarUsuarioTarjeta(selectedCorreo);
+
+            ArrayList<RegistroTarjeta> tajertasUsuario = RegistroTarjetaDao.buscarNumeroTarjeta(usuarioCode);
+
+            for (int i = 0; i < tajertasUsuario.size(); i++) {
+                RegistroTarjeta tarjetas = tajertasUsuario.get(i);
+
+                jComboBox3.addItem(tarjetas.getNumTarjeta());
+            }
+
+            jComboBox5.removeAllItems();
+            jComboBox4.removeAllItems();
+            jComboBox6.removeAllItems();
+
+            String selectedUser = jTextField1.getText();
+            String usario = UserDao.buscarUsuarioTarjeta(selectedUser);
+
+            ArrayList<DatosFacturacion> datosFacturacionDao = DatosFacturacionDao.buscarumeroTarjeta(usario);
+
+            for (int i = 0; i < datosFacturacionDao.size(); i++) {
+                DatosFacturacion datos = datosFacturacionDao.get(i);
+
+                jComboBox5.addItem(datos.getNombreCompleto());
+                jComboBox4.addItem(datos.getDireccion());
+                jComboBox6.addItem(datos.getNIT());
+            }
+
         } else {
             jComboBox3.setEnabled(false);
             jTextFieldCVV.setEnabled(false);
@@ -693,6 +833,26 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jComboBoxDDActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -740,6 +900,9 @@ public class FrmUsuario1 extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBoxDD;
     private javax.swing.JComboBox<String> jComboBoxDeO;
     private javax.swing.JComboBox<String> jComboBoxMD;
@@ -751,6 +914,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
@@ -765,6 +929,9 @@ public class FrmUsuario1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel128;
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel130;
+    private javax.swing.JLabel jLabel131;
+    private javax.swing.JLabel jLabel132;
+    private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

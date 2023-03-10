@@ -7,6 +7,8 @@ package modelo.dao;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.beans.RegistroTarjeta;
+import modelo.beans.User;
+import static modelo.dao.UserDao.users;
 
 /**
  *
@@ -14,12 +16,11 @@ import modelo.beans.RegistroTarjeta;
  */
 public class RegistroTarjetaDao {
 
-    public ArrayList<RegistroTarjeta> registroTarjeta;
-    public ArrayList<RegistroTarjeta> registroDatosTarjeta;
+    public static ArrayList<RegistroTarjeta> registroTarjeta;
 
     public RegistroTarjetaDao() {
         registroTarjeta = new ArrayList<>();
-        registroDatosTarjeta = new ArrayList<>();
+
     }
 
     //buscar
@@ -41,24 +42,17 @@ public class RegistroTarjetaDao {
 
     }
 
-    //registro de datos
-//    public int buscarNombres(String nombreCompleto) {
-//        int m = -1;
-//
-//        for (int i = 0; i < registroTarjeta.size(); i++) {
-//            if (registroTarjeta.get(i).getNombreCompleto().equals(nombreCompleto)) {
-//                m = i;
-//                break;
-//
-//            }
-//        }
-//        return m;
-//    }
-    public boolean agregarDatosUser(RegistroTarjeta registroTarjetas) {
+    public static ArrayList buscarNumeroTarjeta(String correoTarjeta) {
 
-        registroTarjeta.add(registroTarjetas);
-        return true;
+        ArrayList tajertasUsuario = new ArrayList<>();
 
+        for (int i = 0; i < registroTarjeta.size(); i++) {
+            if (registroTarjeta.get(i).getCorreo().equals(correoTarjeta)) {
+                tajertasUsuario.add(registroTarjeta.get(i));
+            }
+
+        }
+        return tajertasUsuario;
     }
 
 }

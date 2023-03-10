@@ -9,7 +9,18 @@ package modelo.beans;
  * @author Usuario
  */
 public class venta {
-    
-    
-    
+
+    //origen
+    private String departamentoOrig;
+    private String municipioOrig;
+    private String direccionOrig;
+
+    //destino
+    private String departamentoDest;
+    private String municipioDest;
+    private String direccionDest;
+
+    private String nPaquete;
+    private String tipoDePago;
+
 }

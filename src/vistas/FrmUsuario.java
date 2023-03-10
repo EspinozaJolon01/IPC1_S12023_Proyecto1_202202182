@@ -5,6 +5,7 @@
 package vistas;
 
 import javax.swing.JOptionPane;
+import modelo.beans.DatosFacturacion;
 import modelo.beans.Departamento;
 import modelo.beans.Municipio;
 import modelo.beans.RegistroTarjeta;
@@ -26,6 +27,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // cargarDepartamentosCombobox();
         jTextField1.setText(users.getCorreo());
+
     }
 
     //llenar comobobox
@@ -103,13 +105,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         jLabel116 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel117 = new javax.swing.JLabel();
         txtNombreTarjeta = new javax.swing.JTextField();
         txtFechaTarjeta = new javax.swing.JTextField();
         txtNombreCompleto = new javax.swing.JTextField();
         txtNit = new javax.swing.JTextField();
         txtDireccionOrig = new javax.swing.JTextField();
-        txtDireccionDesti = new javax.swing.JTextField();
         JBDatosDefacturacion = new javax.swing.JButton();
         txtNumTarjeta2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -710,10 +710,6 @@ public class FrmUsuario extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        jLabel117.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel117.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel117.setText("Dirección destino");
-
         txtNombreTarjeta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
         txtNombreTarjeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -746,13 +742,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         txtDireccionOrig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionOrigActionPerformed(evt);
-            }
-        });
-
-        txtDireccionDesti.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 187, 187)));
-        txtDireccionDesti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionDestiActionPerformed(evt);
             }
         });
 
@@ -822,9 +811,9 @@ public class FrmUsuario extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(JBDatosDefacturacion)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(txtNit)
                                             .addComponent(txtNombreCompleto)
-                                            .addComponent(txtDireccionOrig)))
+                                            .addComponent(txtDireccionOrig)
+                                            .addComponent(txtNit, javax.swing.GroupLayout.Alignment.TRAILING)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -842,11 +831,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                                 .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDireccionDesti)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(87, 87, 87))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -904,15 +889,11 @@ public class FrmUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel93)
                     .addComponent(txtDireccionOrig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel117)
-                    .addComponent(txtDireccionDesti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel94))
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addComponent(JBDatosDefacturacion)
                 .addGap(43, 43, 43))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -943,14 +924,14 @@ public class FrmUsuario extends javax.swing.JFrame {
                 && !txtNumTarjeta2.getText().isEmpty()
                 && !txtFechaTarjeta.getText().isEmpty()) {
 
-            RegistroTarjeta registroTarjeta = new RegistroTarjeta(txtNombreTarjeta.getText(), Integer.parseInt(txtNumTarjeta2.getText()), txtFechaTarjeta.getText());
+            RegistroTarjeta registroTarjeta = new RegistroTarjeta(txtNombreTarjeta.getText(), txtNumTarjeta2.getText(), txtFechaTarjeta.getText(), jTextField1.getText());
 
             // limpiar
             txtNombreTarjeta.setText("");
             txtNumTarjeta2.setText("");
             txtFechaTarjeta.setText("");
 
-            if (Principal.agregarDatosTarjeta(registroTarjeta)) {
+            if (Principal.agregarTarjeta(registroTarjeta)) {
                 JOptionPane.showMessageDialog(this, "Se agregado su tarjeta,exitosamente");
                 System.out.println(registroTarjeta);
 
@@ -966,18 +947,16 @@ public class FrmUsuario extends javax.swing.JFrame {
 
         if (!txtNombreCompleto.getText().isEmpty() && !txtDireccionOrig.getText().isEmpty() && !txtDireccionOrig.getText().isEmpty() && !txtNit.getText().isEmpty()) {
 
-            int nit = Integer.parseInt(txtNit.getText());
-
-            RegistroTarjeta registrosDatos = new RegistroTarjeta(txtNombreCompleto.getText(), txtDireccionOrig.getText(), txtDireccionDesti.getText(), nit);
+           DatosFacturacion datosFacturacion =  new DatosFacturacion(txtNombreCompleto.getText(), txtDireccionOrig.getText(), txtNit.getText(), jTextField1.getText());
 
             txtNombreCompleto.setText("");
             txtDireccionOrig.setText("");
-            txtDireccionDesti.setText("");
+
             txtNit.setText("");
 
-            if (Principal.agregarDatosTarjeta(registrosDatos)) {
+            if (Principal.agregarDatosTarjeta(datosFacturacion)) {
                 JOptionPane.showMessageDialog(this, "Registro de datos exitosamente");
-                System.out.println(registrosDatos);
+                System.out.println(datosFacturacion);
 
             } else {
 
@@ -1052,10 +1031,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void txtDireccionOrigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionOrigActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionOrigActionPerformed
-
-    private void txtDireccionDestiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionDestiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionDestiActionPerformed
 
     private void txtNumTarjeta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumTarjeta2ActionPerformed
         // TODO add your handling code here:
@@ -1169,7 +1144,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
-    private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel120;
@@ -1206,7 +1180,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtCodeDepart5;
-    private javax.swing.JTextField txtDireccionDesti;
     private javax.swing.JTextField txtDireccionOrig;
     private javax.swing.JTextField txtFechaTarjeta;
     private javax.swing.JTextField txtNcajas;

@@ -12,17 +12,17 @@ import java.util.Date;
  */
 public class User {
 
-    private String correo;
-    private String nombre;
-    private String apellido;
-    private String password;
-    private String dpi;
-    private String fecha;
-    private String sobreNombre;
-    private String telefono;
-    private String rol;
-    private String genero;
-    private String nacionalidad;
+    protected String correo;
+    protected String nombre;
+    protected String apellido;
+    protected String password;
+    protected String dpi;
+    protected String fecha;
+    protected String sobreNombre;
+    protected String telefono;
+    protected String rol;
+    protected String genero;
+    protected String nacionalidad;
 
     public User(String rol) {
 
