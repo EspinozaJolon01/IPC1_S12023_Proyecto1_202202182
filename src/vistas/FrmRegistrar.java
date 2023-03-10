@@ -517,12 +517,9 @@ public class FrmRegistrar extends javax.swing.JDialog {
                 && !txtSobrenombre.getText().isEmpty()
                 && !txtTelefono.getText().isEmpty()) {
 
-            dpi = Integer.parseInt(txtDpi.getText());
-            telefono = Integer.parseInt(txtTelefono.getText());
-
             User user = new User(txtCorreo.getText(), txtNombres.getText(),
-                    txtApellidos.getText(), txtContraseñas.getText(), dpi, txtFecha.getText(),
-                    txtSobrenombre.getText(), telefono, JcRol.getSelectedItem().toString(),
+                    txtApellidos.getText(), txtContraseñas.getText(), txtDpi.getText(), txtFecha.getText(),
+                    txtSobrenombre.getText(), txtTelefono.getText(), JcRol.getSelectedItem().toString(),
                     jCNacionalidad.getSelectedItem().toString(), JcRolGenero.getSelectedItem().toString());
 
             if (Principal.buscarContr(user)) {
@@ -576,11 +573,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        JFileChooser jf = new JFileChooser();
-        jf.setMultiSelectionEnabled(false);
-        if (jf.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-
-        }
+      
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

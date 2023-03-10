@@ -25,12 +25,10 @@ public class FrmUsuario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         // cargarDepartamentosCombobox();
-        //    jTextField1.setText(users.getCorreo());
+        jTextField1.setText(users.getCorreo());
     }
 
     //llenar comobobox
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -972,6 +970,11 @@ public class FrmUsuario extends javax.swing.JFrame {
 
             RegistroTarjeta registrosDatos = new RegistroTarjeta(txtNombreCompleto.getText(), txtDireccionOrig.getText(), txtDireccionDesti.getText(), nit);
 
+            txtNombreCompleto.setText("");
+            txtDireccionOrig.setText("");
+            txtDireccionDesti.setText("");
+            txtNit.setText("");
+
             if (Principal.agregarDatosTarjeta(registrosDatos)) {
                 JOptionPane.showMessageDialog(this, "Registro de datos exitosamente");
                 System.out.println(registrosDatos);
@@ -1084,18 +1087,17 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void jComboBoxDeOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDeOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxDeOActionPerformed
-    
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
 
-    
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
 
-        FrmUsuario1 frmUsuario1 = new FrmUsuario1();
+        FrmUsuario1 frmUsuario1 = new FrmUsuario1(Principal.obtener(jTextField1.getText()));
         frmUsuario1.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed

@@ -16,10 +16,10 @@ public class User {
     private String nombre;
     private String apellido;
     private String password;
-    private int dpi;
+    private String dpi;
     private String fecha;
     private String sobreNombre;
-    private int telefono;
+    private String telefono;
     private String rol;
     private String genero;
     private String nacionalidad;
@@ -28,7 +28,7 @@ public class User {
 
     }
 
-    public User(String correo, String nombre, String apellido, String password, int dpi, String fecha, String sobreNombre, int telefono, String rol, String nacionalidad, String genero) {
+    public User(String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String rol, String nacionalidad, String genero) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.password = password;
@@ -85,11 +85,11 @@ public class User {
         this.password = password;
     }
 
-    public int getDpi() {
+    public String getDpi() {
         return dpi;
     }
 
-    public void setDpi(int dpi) {
+    public void setDpi(String dpi) {
         this.dpi = dpi;
     }
 
@@ -109,11 +109,11 @@ public class User {
         this.sobreNombre = sobreNombre;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

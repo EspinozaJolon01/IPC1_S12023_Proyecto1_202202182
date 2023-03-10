@@ -133,4 +133,26 @@ public class UserDao {
         return null;
     }
 
+    //actualizar
+    public void modificarUser(String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String nacionalidad, String genero) {
+
+        for (User user : users) {
+            if (user.getCorreo().equals(correo)) {
+                
+                user.setApellido(apellido);
+                user.setNombre(nombre);
+                user.setCorreo(correo);
+                user.setPassword(password);
+                user.setDpi(dpi);
+                user.setFecha(fecha);
+                user.setSobreNombre(sobreNombre);
+                user.setNacionalidad(nacionalidad);
+                user.setGenero(genero);
+                user.setTelefono(telefono);
+
+            }
+        }
+
+    }
+
 }
