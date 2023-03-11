@@ -36,10 +36,8 @@ public class RegistroTarjetaDao {
 //        return n;
 //    }
     public boolean AgregarTarjeta(RegistroTarjeta registroTarjetas) {
-
         registroTarjeta.add(registroTarjetas);
         return true;
-
     }
 
     public static ArrayList buscarNumeroTarjeta(String correoTarjeta) {

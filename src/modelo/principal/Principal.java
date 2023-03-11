@@ -13,6 +13,7 @@ import modelo.beans.User;
 import modelo.dao.UserDao;
 import modelo.beans.Region;
 import modelo.beans.RegistroTarjeta;
+import modelo.beans.Venta;
 import modelo.dao.DatosFacturacionDao;
 import modelo.dao.DepartamentoDao;
 import static modelo.dao.DepartamentoDao.departamento;
@@ -24,6 +25,7 @@ import modelo.dao.RegionDao;
 import static modelo.dao.RegionDao.region;
 import modelo.dao.RegistroTarjetaDao;
 import static modelo.dao.UserDao.users;
+import modelo.dao.VentaDao;
 import static modelo.principal.Principal.autentificarUser;
 import vistas.FrmModificarDatos;
 import vistas.Frmlogin;
@@ -41,6 +43,7 @@ public class Principal {
     private static MunicipioDao municipioDao = new MunicipioDao();
     private static RegistroTarjetaDao registroTarjetaDao = new RegistroTarjetaDao();
     private static DatosFacturacionDao datosFacturacionDao = new DatosFacturacionDao();
+    private static VentaDao ventaDao =  new VentaDao();
 
     //verificar 
     public static boolean autentificarUser(String correo, String password) {
@@ -195,6 +198,14 @@ public class Principal {
     public static boolean agregarDatosTarjeta(DatosFacturacion datosFacturacion) {
         return datosFacturacionDao.agregarDatosUser(datosFacturacion);
     }
+    
+    //realizar ventas
+    
+    public static boolean realizarVentas(Venta ventasPaquetes){
+        return ventaDao.realizarVentas(ventasPaquetes);
+    }
+    
+    
 
     public static void main(String[] args) {
 
