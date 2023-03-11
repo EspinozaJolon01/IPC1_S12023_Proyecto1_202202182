@@ -4,7 +4,11 @@
  */
 package vistas;
 
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import modelo.beans.User;
+import modelo.beans.Venta;
+import modelo.dao.VentaDao;
 import modelo.principal.Principal;
 
 /**
@@ -20,6 +24,27 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         jTextField1.setText(users.getCorreo());
+        listarVentas();
+
+    }
+
+    public void listarVentas() {
+        DefaultTableModel defaultTableModel = new DefaultTableModel(new String[]{"No.", "Codigo paquetes", "Origen", "Destino", "NIT", "Tipo de pago", "Tamanio del paquete", "N. paquetes", "Total"}, VentaDao.ventas.size());
+        jTable1.setModel(defaultTableModel);
+
+        TableModel modeloDatos = jTable1.getModel();
+
+        for (int i = 0; i < VentaDao.ventas.size(); i++) {
+            Venta venta = VentaDao.ventas.get(i);
+
+            modeloDatos.setValueAt(venta.getDireccionOrig(), i, 2);
+            modeloDatos.setValueAt(venta.getDireccionDest(), i, 3);
+            modeloDatos.setValueAt(venta.getNit(), i, 4);
+            modeloDatos.setValueAt(venta.getTipoDePago(), i, 5);
+            modeloDatos.setValueAt(venta.getTipoDePesoPaquete(), i, 6);
+            modeloDatos.setValueAt(venta.getnPaquete(), i, 7);
+            modeloDatos.setValueAt(venta.getTotal(), i, 8);
+        }
     }
 
     /**
@@ -63,7 +88,7 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No.", "Codigo Paquete", "Origen", "Nit", "Tipo de pago", "Tamaño de paquete", "N. paquete", "Total"
+                "No.", "Codigo Paquete", "Origen", "Destino", "NIT", "Tipo de pago", "Tamanio del paquete", "N. paquete", "total"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
