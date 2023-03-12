@@ -27,7 +27,7 @@ public class VentaDao {
     }
 
     //generar codigo
-    public static void codigoPaquetes() {
+    public static String codigoPaquetes() {
         final String cadena = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXZYabcdefhijklmnpqrstuvwxyz";
 
         final int longitud = 5;
@@ -39,11 +39,27 @@ public class VentaDao {
             char letra = cadena.charAt(posicion);
             sb.append(letra);
         }
-        System.out.println("IPCD_" + sb.toString() + "" + sb.length());
+
+        return "IPCD_" + sb.toString() + "" + sb.length();
+    }
+
+    //generar codigo de venta
+    public static String nFacturas() {
+        final String cadena = "1234567890";
+
+        final int longitud = 5;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < longitud; i++) {
+            double aleatorio = Math.random() * cadena.length();
+            int posicion = (int) aleatorio;
+            char letra = cadena.charAt(posicion);
+            sb.append(letra);
+        }
+
+        return sb.toString() + "" + sb.length();
     }
     
-    //generar codigo de venta
-    public static void noFactura(){
-        
-    }
+    
+    
 }

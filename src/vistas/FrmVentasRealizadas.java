@@ -36,7 +36,8 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
 
         for (int i = 0; i < VentaDao.ventas.size(); i++) {
             Venta venta = VentaDao.ventas.get(i);
-
+            modeloDatos.setValueAt(venta.getnFactura(), i, 0);
+            modeloDatos.setValueAt(venta.getnCodigoPq(), i, 1);
             modeloDatos.setValueAt(venta.getDireccionOrig(), i, 2);
             modeloDatos.setValueAt(venta.getDireccionDest(), i, 3);
             modeloDatos.setValueAt(venta.getNit(), i, 4);

@@ -29,7 +29,11 @@ public class Venta extends User {
     private String nit;
     private String total;
 
-    public Venta(String departamentoOrig, String municipioOrig, String direccionOrig, String departamentoDest, String municipioDest, String direccionDest, String nPaquete, String tipoDePago, String tipoDePesoPaquete, String tipoServicios, String nombre, String direccion, String nit, String total, String correo) {
+    //codigos aleatorios
+    private String nCodigoPq;
+    private String nFactura;
+
+    public Venta(String departamentoOrig, String municipioOrig, String direccionOrig, String departamentoDest, String municipioDest, String direccionDest, String nPaquete, String tipoDePago, String tipoDePesoPaquete, String tipoServicios, String nombre, String direccion, String nit, String total, String nCodigoPq, String nFactura, String correo) {
         super(correo);
         this.departamentoOrig = departamentoOrig;
         this.municipioOrig = municipioOrig;
@@ -45,6 +49,8 @@ public class Venta extends User {
         this.direccion = direccion;
         this.nit = nit;
         this.total = total;
+        this.nCodigoPq = nCodigoPq;
+        this.nFactura = nFactura;
         this.correo = correo;
     }
 
@@ -160,9 +166,25 @@ public class Venta extends User {
         this.nit = nit;
     }
 
+    public String getnCodigoPq() {
+        return nCodigoPq;
+    }
+
+    public void setnCodigoPq(String nCodigoPq) {
+        this.nCodigoPq = nCodigoPq;
+    }
+
+    public String getnFactura() {
+        return nFactura;
+    }
+
+    public void setnFactura(String nFactura) {
+        this.nFactura = nFactura;
+    }
+
     @Override
     public String toString() {
-        return "Venta{" + "departamentoOrig=" + departamentoOrig + ", municipioOrig=" + municipioOrig + ", direccionOrig=" + direccionOrig + ", departamentoDest=" + departamentoDest + ", municipioDest=" + municipioDest + ", direccionDest=" + direccionDest + ", nPaquete=" + nPaquete + ", tipoDePago=" + tipoDePago + ", tipoDePesoPaquete=" + tipoDePesoPaquete + ", tipoServicios=" + tipoServicios + ", nombre=" + nombre + ", direccion=" + direccion + ", nit=" + nit + ", total=" + total + ", correo=" + correo + '}';
+        return "Venta{" + "departamentoOrig=" + departamentoOrig + ", municipioOrig=" + municipioOrig + ", direccionOrig=" + direccionOrig + ", departamentoDest=" + departamentoDest + ", municipioDest=" + municipioDest + ", direccionDest=" + direccionDest + ", nPaquete=" + nPaquete + ", tipoDePago=" + tipoDePago + ", tipoDePesoPaquete=" + tipoDePesoPaquete + ", tipoServicios=" + tipoServicios + ", nombre=" + nombre + ", direccion=" + direccion + ", nit=" + nit + ", total=" + total + ", nCodigoPq=" + nCodigoPq + ", nFactura=" + nFactura + ", correo=" + correo + '}';
     }
 
 }
