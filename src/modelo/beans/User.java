@@ -12,6 +12,7 @@ import java.util.Date;
  */
 public class User {
 
+    protected Integer id;
     protected String correo;
     protected String nombre;
     protected String apellido;
@@ -28,7 +29,8 @@ public class User {
 
     }
 
-    public User(String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String rol, String nacionalidad, String genero) {
+    public User(Integer id, String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String rol, String nacionalidad, String genero) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.password = password;
@@ -47,10 +49,19 @@ public class User {
 
     }
 
-    public User(String correo, String password, String rol) {
+    public User(Integer id, String correo, String password, String rol) {
+        this.id = id;
         this.correo = correo;
         this.password = password;
         this.rol = rol;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCorreo() {
@@ -143,7 +154,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "correo=" + correo + ", nombre=" + nombre + ", apellido=" + apellido + ", password=" + password + ", dpi=" + dpi + ", fecha=" + fecha + ", sobreNombre=" + sobreNombre + ", telefono=" + telefono + ", rol=" + rol + ", genero=" + genero + ", nacionalidad=" + nacionalidad + '}';
+        return "User{" + "id=" + id + ", correo=" + correo + ", nombre=" + nombre + ", apellido=" + apellido + ", password=" + password + ", dpi=" + dpi + ", fecha=" + fecha + ", sobreNombre=" + sobreNombre + ", telefono=" + telefono + ", rol=" + rol + ", genero=" + genero + ", nacionalidad=" + nacionalidad + '}';
     }
 
 }

@@ -17,6 +17,8 @@ import modelo.principal.Principal;
  */
 public class FrmVentasRealizadas extends javax.swing.JFrame {
 
+    private final Integer id;
+
     /**
      * Creates new form VentasRealizadas
      */
@@ -24,8 +26,10 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         jTextField1.setText(users.getCorreo());
+        this.id = users.getId();
+        
         listarVentas();
-
+        
     }
 
     public void listarVentas() {
@@ -34,8 +38,8 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
 
         TableModel modeloDatos = jTable1.getModel();
 
-        for (int i = 0; i < VentaDao.ventas.size(); i++) {
-            Venta venta = VentaDao.ventas.get(i);
+        for (Integer i = 0; i < VentaDao.getSalesById(id).size(); i++) {
+            Venta venta = VentaDao.getSalesById(id).get(i);
             modeloDatos.setValueAt(venta.getnFactura(), i, 0);
             modeloDatos.setValueAt(venta.getnCodigoPq(), i, 1);
             modeloDatos.setValueAt(venta.getDireccionOrig(), i, 2);

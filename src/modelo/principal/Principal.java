@@ -43,7 +43,7 @@ public class Principal {
     private static MunicipioDao municipioDao = new MunicipioDao();
     private static RegistroTarjetaDao registroTarjetaDao = new RegistroTarjetaDao();
     private static DatosFacturacionDao datosFacturacionDao = new DatosFacturacionDao();
-    private static VentaDao ventaDao =  new VentaDao();
+    private static VentaDao ventaDao = new VentaDao();
 
     //verificar 
     public static boolean autentificarUser(String correo, String password) {
@@ -63,14 +63,8 @@ public class Principal {
     }
 
     public static void crearAdmin() {
-        User admin = new User("admin", "admin", "admin");
+        User admin = new User(1, "admin", "admin", "admin");
         users.add(admin);
-
-    }
-
-    public static void crearUserPrube() {
-        User user1 = new User("de", "de", "de", "ProgramaResulto1&", "123", "12/02/200", "enano", "123123", "Indiviual", "guuate", "");
-        users.add(user1);
     }
 
     public static void agregarRegion() {
@@ -198,14 +192,11 @@ public class Principal {
     public static boolean agregarDatosTarjeta(DatosFacturacion datosFacturacion) {
         return datosFacturacionDao.agregarDatosUser(datosFacturacion);
     }
-    
+
     //realizar ventas
-    
-    public static boolean realizarVentas(Venta ventasPaquetes){
+    public static boolean realizarVentas(Venta ventasPaquetes) {
         return ventaDao.realizarVentas(ventasPaquetes);
     }
-    
-    
 
     public static void main(String[] args) {
 
@@ -215,7 +206,6 @@ public class Principal {
         crearAdmin();
         agregarDepar();
         agregarMunicipio();
-        crearUserPrube();
 
     }
 

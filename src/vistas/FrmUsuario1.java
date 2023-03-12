@@ -29,6 +29,7 @@ import modelo.principal.Principal;
 public class FrmUsuario1 extends javax.swing.JFrame {
 
     double prices[];
+    private final Integer id;
 
     /**
      * Creates new form FrmUsuario1
@@ -38,6 +39,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         cargarDepartamentosCombobox();
         jTextField1.setText(users.getCorreo());
+        this.id = users.getId();
 
         conversion = 50;
 
@@ -898,7 +900,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
             Venta ventas = new Venta(jComboBoxDeO.getSelectedItem().toString(), jComboBoxMuOr.getSelectedItem().toString(),
                     jTextField6.getText(), jComboBoxDD.getSelectedItem().toString(), jComboBoxMD.getSelectedItem().toString(), jTextField5.getText(), txtNcajas.getText(), tipoDepago,
                     jComboBox1.getSelectedItem().toString(), jComboBoxOcpiones.getSelectedItem().toString(),
-                    jComboBox5.getSelectedItem().toString(), jComboBox4.getSelectedItem().toString(), jComboBox6.getSelectedItem().toString(), jTextFieldCotizacion1.getText(), nCodigo, nFacturas, jTextField1.getText());
+                    jComboBox5.getSelectedItem().toString(), jComboBox4.getSelectedItem().toString(), jComboBox6.getSelectedItem().toString(), jTextFieldCotizacion1.getText(), nCodigo, nFacturas, jTextField1.getText(),this.id);
 
             jTextField6.setText("");
             jTextField5.setText("");

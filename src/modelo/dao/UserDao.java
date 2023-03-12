@@ -131,6 +131,11 @@ public class UserDao {
         return -1;
     }
 
+    //Obtener id del ultimo usuario
+    public static Integer getLastId() {
+        return users.get(users.size() - 1).getId();
+    }
+
     //prueba
     public User buscarRolUserExistente(String correo) {
         if (buscarUsuario(correo) != -1) {

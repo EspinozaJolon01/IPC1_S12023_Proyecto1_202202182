@@ -22,9 +22,6 @@ public class Frmlogin extends javax.swing.JFrame {
     public Frmlogin() {
         initComponents();
         this.setLocationRelativeTo(null);
-
-        Principal.agregar(new User("admin", "admin", "admin"));
-
     }
 
     /**

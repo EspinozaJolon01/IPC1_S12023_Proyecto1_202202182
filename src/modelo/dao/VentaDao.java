@@ -26,6 +26,18 @@ public class VentaDao {
         return true;
     }
 
+    public static ArrayList<Venta> getSalesById(Integer id) {
+        ArrayList<Venta> saleById = new ArrayList<>();
+
+        for (int i = 0; i < ventas.size(); i++) {
+            if (ventas.get(i).getId().equals(id)) {
+                saleById.add(ventas.get(i));
+            }
+        }
+
+        return saleById;
+    }
+
     //generar codigo
     public static String codigoPaquetes() {
         final String cadena = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXZYabcdefhijklmnpqrstuvwxyz";
@@ -59,7 +71,5 @@ public class VentaDao {
 
         return sb.toString() + "" + sb.length();
     }
-    
-    
-    
+
 }

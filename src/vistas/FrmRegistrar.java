@@ -8,6 +8,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import modelo.beans.User;
+import modelo.dao.UserDao;
 import modelo.principal.Principal;
 
 /**
@@ -517,7 +518,9 @@ public class FrmRegistrar extends javax.swing.JDialog {
                 && !txtSobrenombre.getText().isEmpty()
                 && !txtTelefono.getText().isEmpty()) {
 
-            User user = new User(txtCorreo.getText(), txtNombres.getText(),
+            System.out.println(UserDao.getLastId());
+            
+            User user = new User(UserDao.getLastId() + 1, txtCorreo.getText(), txtNombres.getText(),
                     txtApellidos.getText(), txtContraseñas.getText(), txtDpi.getText(), txtFecha.getText(),
                     txtSobrenombre.getText(), txtTelefono.getText(), JcRol.getSelectedItem().toString(),
                     jCNacionalidad.getSelectedItem().toString(), JcRolGenero.getSelectedItem().toString());

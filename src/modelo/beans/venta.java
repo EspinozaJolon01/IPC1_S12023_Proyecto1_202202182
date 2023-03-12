@@ -33,8 +33,9 @@ public class Venta extends User {
     private String nCodigoPq;
     private String nFactura;
 
-    public Venta(String departamentoOrig, String municipioOrig, String direccionOrig, String departamentoDest, String municipioDest, String direccionDest, String nPaquete, String tipoDePago, String tipoDePesoPaquete, String tipoServicios, String nombre, String direccion, String nit, String total, String nCodigoPq, String nFactura, String correo) {
+    public Venta(String departamentoOrig, String municipioOrig, String direccionOrig, String departamentoDest, String municipioDest, String direccionDest, String nPaquete, String tipoDePago, String tipoDePesoPaquete, String tipoServicios, String nombre, String direccion, String nit, String total, String nCodigoPq, String nFactura, String correo, Integer id) {
         super(correo);
+        this.id = id;
         this.departamentoOrig = departamentoOrig;
         this.municipioOrig = municipioOrig;
         this.direccionOrig = direccionOrig;
@@ -52,6 +53,16 @@ public class Venta extends User {
         this.nCodigoPq = nCodigoPq;
         this.nFactura = nFactura;
         this.correo = correo;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTotal() {
