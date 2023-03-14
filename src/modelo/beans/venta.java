@@ -4,6 +4,8 @@
  */
 package modelo.beans;
 
+import java.util.Comparator;
+
 /**
  *
  * @author Usuario
@@ -153,10 +155,12 @@ public class Venta extends User {
         this.tipoServicios = tipoServicios;
     }
 
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -197,5 +201,7 @@ public class Venta extends User {
     public String toString() {
         return "Venta{" + "departamentoOrig=" + departamentoOrig + ", municipioOrig=" + municipioOrig + ", direccionOrig=" + direccionOrig + ", departamentoDest=" + departamentoDest + ", municipioDest=" + municipioDest + ", direccionDest=" + direccionDest + ", nPaquete=" + nPaquete + ", tipoDePago=" + tipoDePago + ", tipoDePesoPaquete=" + tipoDePesoPaquete + ", tipoServicios=" + tipoServicios + ", nombre=" + nombre + ", direccion=" + direccion + ", nit=" + nit + ", total=" + total + ", nCodigoPq=" + nCodigoPq + ", nFactura=" + nFactura + ", correo=" + correo + '}';
     }
+    
+
 
 }

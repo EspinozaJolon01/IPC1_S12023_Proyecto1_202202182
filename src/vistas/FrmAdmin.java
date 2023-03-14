@@ -416,7 +416,9 @@ public class FrmAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Registo");
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setForeground(new java.awt.Color(0, 0, 51));
+        jButton3.setText("Reportes");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

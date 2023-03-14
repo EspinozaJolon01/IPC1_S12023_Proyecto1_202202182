@@ -6,6 +6,8 @@ package modelo.dao;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import modelo.beans.Venta;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -19,9 +21,13 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 public class VentaDao {
 
     public static ArrayList<Venta> ventas;
+    public static ArrayList<Venta> ventasNpaquetes;
 
     public VentaDao() {
         ventas = new ArrayList<>();
+        ventasNpaquetes = new ArrayList<>();
+        ventasNpaquetes = ventas;
+        Collections.sort(ventasNpaquetes, new ordenamiento());
     }
 
     //crear Ventas
