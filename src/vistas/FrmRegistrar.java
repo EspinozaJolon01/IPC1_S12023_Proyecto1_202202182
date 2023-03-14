@@ -16,7 +16,7 @@ import modelo.principal.Principal;
  * @author Usuario
  */
 public class FrmRegistrar extends javax.swing.JDialog {
-
+    
     private static User _user;
 
     /**
@@ -27,7 +27,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -501,14 +501,14 @@ public class FrmRegistrar extends javax.swing.JDialog {
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosActionPerformed
-
+    
     int dpi;
     int telefono;
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         validar();
         boolean verifica = false;
-
+        
         if (!txtNombres.getText().isEmpty()
                 && !txtApellidos.getText().isEmpty()
                 && !txtDpi.getText().isEmpty()
@@ -517,7 +517,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
                 && !txtCorreo.getText().isEmpty()
                 && !txtSobrenombre.getText().isEmpty()
                 && !txtTelefono.getText().isEmpty()) {
-
+            
             System.out.println(UserDao.getLastId());
             
             User user = new User(UserDao.getLastId() + 1, txtCorreo.getText(), txtNombres.getText(),
@@ -525,30 +525,40 @@ public class FrmRegistrar extends javax.swing.JDialog {
                     txtSobrenombre.getText(), txtTelefono.getText(), JcRol.getSelectedItem().toString(),
                     jCNacionalidad.getSelectedItem().toString(), JcRolGenero.getSelectedItem().toString());
 
+            //limpiar
+            txtNombres.setText("");
+            txtApellidos.setText("");
+            txtDpi.setText("");
+            txtFecha.setText("");
+            txtContraseñas.setText("");
+            txtCorreo.setText("");
+            txtSobrenombre.setText("");
+            txtTelefono.setText("");
+            
             if (Principal.buscarContr(user)) {
                 if (Principal.agregar(user)) {
-
+                    
                     JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
                     System.out.println(user);
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(this, "Correo ya existente, utilice otro distinto");
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "contra insegura");
             }
-
+            
         } else {
             JOptionPane.showMessageDialog(this, "rellene los campos necesarios");
         }
-
+        
 
     }//GEN-LAST:event_btnIngresarActionPerformed
-
+    
     public static User getUser() {
         return _user;
     }
-
+    
 
     private void txtDpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDpiActionPerformed
         // TODO add your handling code here:
@@ -561,7 +571,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
     private void JcRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcRolActionPerformed
         // TODO add your handling code here:
         if (JcRol.getSelectedItem().equals("Kiosco")) {
-
+            
             JcRolAsignarKisoc.setEnabled(true);
         } else {
             JcRolAsignarKisoc.setEnabled(false);
@@ -576,7 +586,6 @@ public class FrmRegistrar extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-      
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -655,13 +664,13 @@ public class FrmRegistrar extends javax.swing.JDialog {
             }
         });
     }
-
+    
     private void validar() {
-
+        
         try {
-
+            
         } catch (Exception e) {
-
+            
             JOptionPane.showMessageDialog(this, e.getLocalizedMessage());
         }
     }

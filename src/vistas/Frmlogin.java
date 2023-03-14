@@ -261,8 +261,9 @@ public class Frmlogin extends javax.swing.JFrame {
 
                     case "Kiosco":
                         JOptionPane.showMessageDialog(this, "bienvenido " + user.getCorreo());
-                        FrmKiosko frmKiosko = new FrmKiosko();
-                        frmKiosko.setVisible(true);
+
+                        FrmUsuario frmUsuarios = new FrmUsuario(Principal.obtener(txtUsuario.getText()));
+                        frmUsuarios.setVisible(true);
                         dispose();
                         break;
 

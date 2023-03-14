@@ -4,8 +4,13 @@
  */
 package modelo.dao;
 
+import java.awt.Font;
 import java.util.ArrayList;
 import modelo.beans.Venta;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 
 /**
  *
@@ -36,6 +41,28 @@ public class VentaDao {
         }
 
         return saleById;
+    }
+
+    //sumar venta totales
+    public static Double obtenerTotalSumarlo() {
+        double num = 0;
+        for (int i = 0; i < ventas.size(); i++) {
+            double total = ventas.get(i).getTotal();
+            num += total;
+        }
+        return num;
+
+    }
+
+    //sumar venta totales
+    public static int obtenerPaquetesTotales() {
+        int num = 0;
+        for (int i = 0; i < ventas.size(); i++) {
+            int total = ventas.get(i).getnPaquete();
+            num += total;
+        }
+        return num;
+
     }
 
     //generar codigo

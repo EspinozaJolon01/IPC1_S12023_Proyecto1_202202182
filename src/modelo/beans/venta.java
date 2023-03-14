@@ -20,20 +20,20 @@ public class Venta extends User {
     private String municipioDest;
     private String direccionDest;
 
-    private String nPaquete;
+    private int nPaquete;
     private String tipoDePago;
     private String tipoDePesoPaquete;
     private String tipoServicios;
     private String nombre;
     private String direccion;
     private String nit;
-    private String total;
+    private double total;
 
     //codigos aleatorios
     private String nCodigoPq;
     private String nFactura;
 
-    public Venta(String departamentoOrig, String municipioOrig, String direccionOrig, String departamentoDest, String municipioDest, String direccionDest, String nPaquete, String tipoDePago, String tipoDePesoPaquete, String tipoServicios, String nombre, String direccion, String nit, String total, String nCodigoPq, String nFactura, String correo, Integer id) {
+    public Venta(String departamentoOrig, String municipioOrig, String direccionOrig, String departamentoDest, String municipioDest, String direccionDest, int nPaquete, String tipoDePago, String tipoDePesoPaquete, String tipoServicios, String nombre, String direccion, String nit, double total, String nCodigoPq, String nFactura, String correo, Integer id) {
         super(correo);
         this.id = id;
         this.departamentoOrig = departamentoOrig;
@@ -65,11 +65,11 @@ public class Venta extends User {
         this.id = id;
     }
 
-    public String getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -121,11 +121,11 @@ public class Venta extends User {
         this.direccionDest = direccionDest;
     }
 
-    public String getnPaquete() {
+    public int getnPaquete() {
         return nPaquete;
     }
 
-    public void setnPaquete(String nPaquete) {
+    public void setnPaquete(int nPaquete) {
         this.nPaquete = nPaquete;
     }
 
