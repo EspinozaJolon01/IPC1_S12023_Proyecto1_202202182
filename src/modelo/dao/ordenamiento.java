@@ -14,6 +14,7 @@ import modelo.beans.Venta;
 public class ordenamiento implements Comparator<Venta> {
 
     @Override
+    
     public int compare(Venta o1, Venta o2) {
         if (o1.getnPaquete() > o2.getnPaquete()) {
             return -1;

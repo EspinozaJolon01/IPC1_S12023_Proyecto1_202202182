@@ -92,7 +92,7 @@ public class FrmRegistrosAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(60, 63, 65));
+        jButton3.setBackground(new java.awt.Color(0, 0, 51));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

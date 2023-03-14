@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmAdmin.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/Venta.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmUsuario1.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmRegistrar.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/User.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmModificarDatos.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/RegistroTarjetaDao.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmVentasRealizadas.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/principal/Principal.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/UserDao.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/VentaDao.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/UserDao.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmUsuario1.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmRegistrosAdmin.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmUsuario.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/Frmlogin.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/ordenamiento.java</file>
         </group>
     </open-files>
 </project-private>
