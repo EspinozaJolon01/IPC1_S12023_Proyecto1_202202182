@@ -7,7 +7,9 @@ package vistas;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import modelo.beans.Kiosco;
 import modelo.beans.User;
+import modelo.dao.KioscoDao;
 import modelo.dao.UserDao;
 import modelo.principal.Principal;
 
@@ -16,7 +18,7 @@ import modelo.principal.Principal;
  * @author Usuario
  */
 public class FrmRegistrar extends javax.swing.JDialog {
-    
+
     private static User _user;
 
     /**
@@ -27,7 +29,8 @@ public class FrmRegistrar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        cargarKioscoCombobox();
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -43,6 +46,14 @@ public class FrmRegistrar extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(FrmRegistrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmRegistrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+
+    public void cargarKioscoCombobox() {
+        for (int i = 0; i < KioscoDao.kiosco.size(); i++) {
+            Kiosco kiosco = KioscoDao.kiosco.get(i);
+            JcRolAsignarKisoc.addItem(kiosco.getCodigoKiosco());
+
         }
     }
 
@@ -501,14 +512,14 @@ public class FrmRegistrar extends javax.swing.JDialog {
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosActionPerformed
-    
+
     int dpi;
     int telefono;
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         validar();
         boolean verifica = false;
-        
+
         if (!txtNombres.getText().isEmpty()
                 && !txtApellidos.getText().isEmpty()
                 && !txtDpi.getText().isEmpty()
@@ -517,9 +528,9 @@ public class FrmRegistrar extends javax.swing.JDialog {
                 && !txtCorreo.getText().isEmpty()
                 && !txtSobrenombre.getText().isEmpty()
                 && !txtTelefono.getText().isEmpty()) {
-            
+
             System.out.println(UserDao.getLastId());
-            
+
             User user = new User(UserDao.getLastId() + 1, txtCorreo.getText(), txtNombres.getText(),
                     txtApellidos.getText(), txtContraseñas.getText(), txtDpi.getText(), txtFecha.getText(),
                     txtSobrenombre.getText(), txtTelefono.getText(), JcRol.getSelectedItem().toString(),
@@ -534,31 +545,31 @@ public class FrmRegistrar extends javax.swing.JDialog {
             txtCorreo.setText("");
             txtSobrenombre.setText("");
             txtTelefono.setText("");
-            
+
             if (Principal.buscarContr(user)) {
                 if (Principal.agregar(user)) {
-                    
+
                     JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
                     System.out.println(user);
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(this, "Correo ya existente, utilice otro distinto");
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "contra insegura");
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "rellene los campos necesarios");
         }
-        
+
 
     }//GEN-LAST:event_btnIngresarActionPerformed
-    
+
     public static User getUser() {
         return _user;
     }
-    
+
 
     private void txtDpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDpiActionPerformed
         // TODO add your handling code here:
@@ -571,7 +582,7 @@ public class FrmRegistrar extends javax.swing.JDialog {
     private void JcRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcRolActionPerformed
         // TODO add your handling code here:
         if (JcRol.getSelectedItem().equals("Kiosco")) {
-            
+
             JcRolAsignarKisoc.setEnabled(true);
         } else {
             JcRolAsignarKisoc.setEnabled(false);
@@ -664,13 +675,13 @@ public class FrmRegistrar extends javax.swing.JDialog {
             }
         });
     }
-    
+
     private void validar() {
-        
+
         try {
-            
+
         } catch (Exception e) {
-            
+
             JOptionPane.showMessageDialog(this, e.getLocalizedMessage());
         }
     }

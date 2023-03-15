@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmAdmin.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/Venta.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/beans/Region.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmModificarDatos.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/RegistroTarjetaDao.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmVentasRealizadas.java</file>
@@ -15,7 +16,6 @@
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmRegistrosAdmin.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/FrmUsuario.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/vistas/Frmlogin.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/%20USAC-Delivery/src/modelo/dao/ordenamiento.java</file>
         </group>
     </open-files>
 </project-private>

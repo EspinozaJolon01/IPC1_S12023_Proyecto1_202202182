@@ -25,17 +25,13 @@ import modelo.dao.RegistroTarjetaDao;
 import modelo.dao.UserDao;
 import modelo.dao.VentaDao;
 import modelo.principal.Principal;
-import org.apache.pdfbox.pdfwriter.ContentStreamWriter;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 
 /**
  *
@@ -962,7 +958,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                 contentStrem.beginText();
                 contentStrem.setFont(font, 40);
                 contentStrem.setNonStrokingColor(Color.BLACK);
-                String text1 = "Coptizacion";
+                String text1 = "Cotizacion";
                 float fontWidth1 = font.getStringWidth(text1) / 1000 * 90;
                 contentStrem.newLineAtOffset((pageHeight - fontWidth1) / 2, pageHeight - 55);
                 contentStrem.showText(text1);
@@ -971,7 +967,7 @@ public class FrmUsuario1 extends javax.swing.JFrame {
                 contentStrem.beginText();
                 contentStrem.setFont(font, 12);
                 contentStrem.newLineAtOffset(20, myPage.getMediaBox().getHeight() - 120);
-                contentStrem.showText("| Usuario: " + jTextField1.getText() + "| No Paque: " + txtNcajas.getText() + "| Servicion: " + tipoDepago + "| Peso: " + jComboBox1.getSelectedItem().toString() + "| Total: " + jTextFieldCotizacion1.getText() + "|");
+                contentStrem.showText(" Usuario: " + jTextField1.getText() + " No Paque: " + txtNcajas.getText() + " Servicion: " + tipoDepago + " Peso: " + jComboBox1.getSelectedItem().toString() + " Total: " + jTextFieldCotizacion1.getText() + "|");
                 contentStrem.close();
                 
                 documento.save("C:\\Users\\Usuario\\Documents\\Usac\\11-PDF.pdf ");

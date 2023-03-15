@@ -4,8 +4,27 @@
  */
 package vistas;
 
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+
+import javax.swing.text.Element;
+import javax.swing.text.Position;
+import javax.swing.text.Segment;
+
 import modelo.beans.User;
 import modelo.beans.Venta;
 import modelo.dao.VentaDao;
@@ -27,9 +46,9 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jTextField1.setText(users.getCorreo());
         this.id = users.getId();
-        
+
         listarVentas();
-        
+
     }
 
     public void listarVentas() {
@@ -101,8 +120,18 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Descargar Factuira");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Descargar Guia");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,6 +204,137 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String path = "";
+        JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int x = j.showSaveDialog(this);
+
+        if (x == JFileChooser.APPROVE_OPTION) {
+            path = j.getSelectedFile().getPath();
+        }
+
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(path + "factura.pdf"));
+
+            document.open();
+            PdfPTable tabla = new PdfPTable(9);
+            Paragraph paragraphHello = new Paragraph();
+            paragraphHello.add("Orden de factura");
+            document.add(paragraphHello);
+
+            tabla.addCell("No. Fact");
+            tabla.addCell("Codigo Paquete");
+            tabla.addCell("Origen");
+            tabla.addCell("Destino");
+            tabla.addCell("NIT");
+            tabla.addCell("tipo de pago");
+            tabla.addCell("Tamanio");
+            tabla.addCell("N paquete");
+            tabla.addCell("Total");
+
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+
+                String fact = jTable1.getValueAt(i, 0).toString();
+                String CodigoP = jTable1.getValueAt(i, 1).toString();
+                String Origen = jTable1.getValueAt(i, 2).toString();
+                String Destino = jTable1.getValueAt(i, 3).toString();
+                String NIT = jTable1.getValueAt(i, 4).toString();
+                String tipoPago = jTable1.getValueAt(i, 5).toString();
+                String Tamanio = jTable1.getValueAt(i, 6).toString();
+                String paquete = jTable1.getValueAt(i, 7).toString();
+                String Total = jTable1.getValueAt(i, 8).toString();
+
+                tabla.addCell(fact);
+                tabla.addCell(CodigoP);
+                tabla.addCell(Origen);
+                tabla.addCell(Destino);
+                tabla.addCell(NIT);
+                tabla.addCell(tipoPago);
+                tabla.addCell(Tamanio);
+                tabla.addCell(paquete);
+                tabla.addCell(Total);
+
+            }
+            document.add(tabla);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FrmVentasRealizadas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(FrmVentasRealizadas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        document.close();
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String path = "";
+        JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int x = j.showSaveDialog(this);
+
+        if (x == JFileChooser.APPROVE_OPTION) {
+            path = j.getSelectedFile().getPath();
+        }
+
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(path + "guia.pdf"));
+
+            document.open();
+            PdfPTable tabla = new PdfPTable(7);
+            Paragraph paragraphHello = new Paragraph();
+            paragraphHello.add("Guia de paquete");
+            document.add(paragraphHello);
+
+            tabla.addCell("Codigo Paquete");
+            tabla.addCell("Origen");
+            tabla.addCell("Destino");
+            tabla.addCell("tipo de pago");
+            tabla.addCell("Tamanio");
+            tabla.addCell("N paquete");
+            tabla.addCell("Total");
+
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+
+                String CodigoP = jTable1.getValueAt(i, 1).toString();
+                String Origen = jTable1.getValueAt(i, 2).toString();
+                String Destino = jTable1.getValueAt(i, 3).toString();
+                String tipoPago = jTable1.getValueAt(i, 5).toString();
+                String Tamanio = jTable1.getValueAt(i, 6).toString();
+                String paquete = jTable1.getValueAt(i, 7).toString();
+                String Total = jTable1.getValueAt(i, 8).toString();
+
+                tabla.addCell(CodigoP);
+                tabla.addCell(Origen);
+                tabla.addCell(Destino);
+                tabla.addCell(tipoPago);
+                tabla.addCell(Tamanio);
+                tabla.addCell(paquete);
+                tabla.addCell(Total);
+
+            }
+
+            Paragraph paragraph = new Paragraph();
+            paragraph.add("Fecha: 15/03/2023");
+            document.add(paragraph);
+            document.add(tabla);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FrmVentasRealizadas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(FrmVentasRealizadas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        document.close();
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,16 +349,24 @@ public class FrmVentasRealizadas extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVentasRealizadas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

@@ -25,13 +25,13 @@ public class FrmRegistrosAdmin extends javax.swing.JFrame {
     }
 
     public void listarVentas() {
-        DefaultTableModel defaultTableModel = new DefaultTableModel(new String[]{"Correo", "No Factura", "Codigo de paquete", "Numero de paquete", "total"}, VentaDao.ventasNpaquetes.size());
+        DefaultTableModel defaultTableModel = new DefaultTableModel(new String[]{"Correo", "No Factura", "Codigo de paquete", "Numero de paquete", "total"}, VentaDao.ordenarPaquetes().size());
         jTable1.setModel(defaultTableModel);
 
         TableModel modeloDatos = jTable1.getModel();
 
-        for (int i = 0; i < VentaDao.ventasNpaquetes.size(); i++) {
-            Venta venta = VentaDao.ventasNpaquetes.get(i);
+        for (int i = 0; i < VentaDao.ordenarPaquetes().size(); i++) {
+            Venta venta = VentaDao.ordenarPaquetes().get(i);
             modeloDatos.setValueAt(venta.getCorreo(), i, 0);
             modeloDatos.setValueAt(venta.getnFactura(), i, 1);
             modeloDatos.setValueAt(venta.getnCodigoPq(), i, 2);

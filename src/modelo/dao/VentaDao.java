@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import modelo.beans.Venta;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
 
 /**
  *
@@ -26,8 +22,14 @@ public class VentaDao {
     public VentaDao() {
         ventas = new ArrayList<>();
         ventasNpaquetes = new ArrayList<>();
+
+    }
+
+    public static ArrayList<Venta> ordenarPaquetes() {
         ventasNpaquetes = ventas;
-        Collections.sort(ventasNpaquetes, new ordenamiento());
+        Collections.sort(ventasNpaquetes);
+        ventasNpaquetes.sort((o1, o2) -> o1.compareTo(o2));
+        return ventasNpaquetes;
     }
 
     //crear Ventas

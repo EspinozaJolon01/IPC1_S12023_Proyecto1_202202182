@@ -10,7 +10,7 @@ import java.util.Comparator;
  *
  * @author Usuario
  */
-public class Venta extends User {
+public class Venta extends User implements Comparable<Venta> {
 
     //origen
     private String departamentoOrig;
@@ -201,7 +201,11 @@ public class Venta extends User {
     public String toString() {
         return "Venta{" + "departamentoOrig=" + departamentoOrig + ", municipioOrig=" + municipioOrig + ", direccionOrig=" + direccionOrig + ", departamentoDest=" + departamentoDest + ", municipioDest=" + municipioDest + ", direccionDest=" + direccionDest + ", nPaquete=" + nPaquete + ", tipoDePago=" + tipoDePago + ", tipoDePesoPaquete=" + tipoDePesoPaquete + ", tipoServicios=" + tipoServicios + ", nombre=" + nombre + ", direccion=" + direccion + ", nit=" + nit + ", total=" + total + ", nCodigoPq=" + nCodigoPq + ", nFactura=" + nFactura + ", correo=" + correo + '}';
     }
-    
 
+    @Override
+    public int compareTo(Venta o) {
+
+        return (this.getnPaquete() > o.getnPaquete() ? -1 : (this.getnPaquete() == o.getnPaquete() ? 0 : 1));
+    }
 
 }
