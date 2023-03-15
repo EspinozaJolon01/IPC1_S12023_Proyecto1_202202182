@@ -531,7 +531,7 @@ public class FrmModificarDatos extends javax.swing.JFrame {
         if (!jTextNdepartamento.getText().isEmpty()) {
             if (modificar >= 0) {
                 Principal.editarDepartamento(jTextObtenerDepar.getText(), jTextNdepartamento.getText());
-                JOptionPane.showMessageDialog(this, "Kiosco Actualizado");
+                JOptionPane.showMessageDialog(this, "departamentos Actualizado");
 
                 model.setValueAt(jTextNdepartamento.getText(), i, 1);
 
@@ -582,7 +582,7 @@ public class FrmModificarDatos extends javax.swing.JFrame {
         if (!jTextField1.getText().isEmpty()) {
             if (modificar >= 0) {
                 Principal.editarMunicipio(jTextField2.getText(), jTextField1.getText());
-                JOptionPane.showMessageDialog(this, "Kiosco Actualizado");
+                JOptionPane.showMessageDialog(this, "Municipio Actualizado");
 
                 model.setValueAt(jTextField2.getText(), i, 0);
 

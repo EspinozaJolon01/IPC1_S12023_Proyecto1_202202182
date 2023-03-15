@@ -150,7 +150,7 @@ public class UserDao {
     }
 
     //actualizar
-    public void modificarUser(String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String nacionalidad, String genero) {
+    public void modificarUser(String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String nacionalidad, String genero,String foto) {
 
         for (User user : users) {
             if (user.getCorreo().equals(correo)) {
@@ -165,6 +165,7 @@ public class UserDao {
                 user.setNacionalidad(nacionalidad);
                 user.setGenero(genero);
                 user.setTelefono(telefono);
+                user.setFoto(foto);
 
             }
         }

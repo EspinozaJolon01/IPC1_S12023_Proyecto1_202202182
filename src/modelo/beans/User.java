@@ -24,12 +24,13 @@ public class User {
     protected String rol;
     protected String genero;
     protected String nacionalidad;
+    protected String foto;
 
     public User(String rol) {
 
     }
 
-    public User(Integer id, String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String rol, String nacionalidad, String genero) {
+    public User(Integer id, String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String rol, String nacionalidad, String genero, String foto) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -42,6 +43,7 @@ public class User {
         this.rol = rol;
         this.nacionalidad = nacionalidad;
         this.genero = genero;
+        this.foto = foto;
 
     }
 
@@ -54,6 +56,14 @@ public class User {
         this.correo = correo;
         this.password = password;
         this.rol = rol;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public Integer getId() {
@@ -154,7 +164,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", correo=" + correo + ", nombre=" + nombre + ", apellido=" + apellido + ", password=" + password + ", dpi=" + dpi + ", fecha=" + fecha + ", sobreNombre=" + sobreNombre + ", telefono=" + telefono + ", rol=" + rol + ", genero=" + genero + ", nacionalidad=" + nacionalidad + '}';
+        return "User{" + "id=" + id + ", correo=" + correo + ", nombre=" + nombre + ", apellido=" + apellido + ", password=" + password + ", dpi=" + dpi + ", fecha=" + fecha + ", sobreNombre=" + sobreNombre + ", telefono=" + telefono + ", rol=" + rol + ", genero=" + genero + ", nacionalidad=" + nacionalidad + ", foto=" + foto + '}';
     }
 
 }

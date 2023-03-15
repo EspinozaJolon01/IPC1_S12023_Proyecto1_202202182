@@ -63,7 +63,7 @@ public class Principal {
     }
 
     public static void crearAdmin() {
-        User admin = new User(1, "admin", "admin", "admin");
+        User admin = new User(1, "ipc1_202202182@ipc1delivery.com", "202202182", "admin");
         users.add(admin);
     }
 
@@ -119,8 +119,8 @@ public class Principal {
         return usuarioDoa.agregarUsuario(user);
     }
 
-    public static void editarUser(String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String nacionalidad, String genero) {
-        usuarioDoa.modificarUser(correo, nombre, apellido, password, dpi, fecha, sobreNombre, telefono, nacionalidad, genero);
+    public static void editarUser(String correo, String nombre, String apellido, String password, String dpi, String fecha, String sobreNombre, String telefono, String nacionalidad, String genero,String foto) {
+        usuarioDoa.modificarUser(correo, nombre, apellido, password, dpi, fecha, sobreNombre, telefono, nacionalidad, genero,foto);
     }
 
     public static User obtener(String correo) {
