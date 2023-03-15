@@ -16,12 +16,23 @@ public class RegistroTarjeta extends User {
     private String numTarjeta;
     private String fechaVencimiento;
 
-    public RegistroTarjeta(String nombreTarjeta, String numTarjeta, String fechaVencimiento, String correo) {
+    public RegistroTarjeta(String nombreTarjeta, String numTarjeta, String fechaVencimiento, String correo, Integer id) {
         super(correo);
+        this.id = id;
         this.nombreTarjeta = nombreTarjeta;
         this.numTarjeta = numTarjeta;
         this.fechaVencimiento = fechaVencimiento;
         this.correo = correo;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombreTarjeta() {

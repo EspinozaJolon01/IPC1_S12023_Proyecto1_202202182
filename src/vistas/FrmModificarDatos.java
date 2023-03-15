@@ -510,7 +510,6 @@ public class FrmModificarDatos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debes de llenar los campos necesario", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-
     }//GEN-LAST:event_jbModificarKisocoActionPerformed
 
     private void jTextObtenerDeparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextObtenerDeparActionPerformed

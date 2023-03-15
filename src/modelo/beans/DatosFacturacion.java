@@ -16,11 +16,14 @@ public class DatosFacturacion extends User {
 
     public DatosFacturacion(String nombreCompleto, String direccion, String NIT, String correo) {
         super(correo);
+     
         this.nombreCompleto = nombreCompleto;
         this.direccion = direccion;
         this.NIT = NIT;
         this.correo = correo;
     }
+
+
 
     public String getNombreCompleto() {
         return nombreCompleto;

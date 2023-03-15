@@ -188,6 +188,10 @@ public class Principal {
         return registroTarjetaDao.AgregarTarjeta(registroTarjetas);
     }
 
+    public static void editarTarjetas(String nombreTarjeta, String numTarjeta, String fechaVencimiento) {
+        registroTarjetaDao.modificarKiosco(nombreTarjeta, numTarjeta, fechaVencimiento);
+    }
+
     //registro de datos tarjeta
     public static boolean agregarDatosTarjeta(DatosFacturacion datosFacturacion) {
         return datosFacturacionDao.agregarDatosUser(datosFacturacion);

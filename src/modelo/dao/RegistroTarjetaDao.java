@@ -6,6 +6,7 @@ package modelo.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import modelo.beans.DatosFacturacion;
 import modelo.beans.RegistroTarjeta;
 import modelo.beans.User;
 import static modelo.dao.UserDao.users;
@@ -21,6 +22,30 @@ public class RegistroTarjetaDao {
     public RegistroTarjetaDao() {
         registroTarjeta = new ArrayList<>();
 
+    }
+
+    public static ArrayList<RegistroTarjeta> getSalesById(Integer id) {
+        ArrayList<RegistroTarjeta> saleById = new ArrayList<>();
+
+        for (int i = 0; i < registroTarjeta.size(); i++) {
+            if (registroTarjeta.get(i).getId().equals(id)) {
+                saleById.add(registroTarjeta.get(i));
+            }
+        }
+
+        return saleById;
+    }
+
+    //actualizar
+    public void modificarKiosco(String nombreTarjeta, String numTarjeta, String fechaVencimiento) {
+        for (RegistroTarjeta registroTarjeta1 : registroTarjeta) {
+            if (registroTarjeta1.getNombreTarjeta().equals(nombreTarjeta)) {
+              
+                registroTarjeta1.setNumTarjeta(numTarjeta);
+                registroTarjeta1.setFechaVencimiento(fechaVencimiento);
+
+            }
+        }
     }
 
     //buscar

@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import modelo.beans.DatosFacturacion;
 import modelo.beans.Departamento;
@@ -55,6 +57,8 @@ public class FrmUsuario1 extends javax.swing.JFrame {
         conversion = 50;
         
     }
+    
+
     
     public void cargarDepartamentosCombobox() {
         // Principal.agregarRegion();
